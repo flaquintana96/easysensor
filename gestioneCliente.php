@@ -1,5 +1,6 @@
 <?php
 require "connessione.php";
+require "alert.php";
 session_start();
 $nome ="";
 $username="";
@@ -18,11 +19,12 @@ $password =  mysql_real_escape_string($_POST["password"]);
 $nome =  mysql_real_escape_string($_POST["nome"]);
 
 if(aggiungiCliente( $username, $password, $nome)) {
-echo "<script> alert('Cliente aggiunto!'); </script>";
+$mess='Cliente aggiunto';
+Alert($mess);
 }
 else{
-echo"<script> alert('Username esistente!'); </script>";
-}
+$mess='Username esistente';
+Alert($mess);}
 
 }
 }
@@ -35,11 +37,11 @@ if(isset($_POST["id_cliente"])){
 $id_cliente = $_POST["id_cliente"];
 
 if(!rimuoviCliente($id_cliente)){
-echo "<script> alert('Cliente non trovato!'); </script>";
-}
+$mess='Cliente non trovato';
+Alert($mess);}
 else {
-echo "<script> alert('Cliente rimosso!'); </script>";
-}
+$mess='Cliente rimosso';
+Alert($mess);}
 
 }
 }
