@@ -6,8 +6,8 @@ $idutente = $_SESSION['id'];
 
 
 $codice=0;
-$radio="";
-$vis="";
+$radio;
+$vis;
 
 function visualizzaDashboard(){
 
@@ -213,13 +213,22 @@ echo"<th class='th'>FORMATO</th>";
 echo"</tr>";
 
 }
+	$tr="<tr>";
+	$_tr="</tr>";
+	$td_class="<td class='td'>";
+	$_td="</td>";
+	
 while ($row = mysql_fetch_assoc($vis)) {
-		echo"<tr>";
-        echo "<td class='td'> ". $row['codice']."</td> ";
-        echo "<td class='td'> ". $row['nome']." </td>";
-        echo "<td class='td'> ". $row['formato']." </td> ";
-        echo "</tr>";
-        }
+	$codice= htmlspecialchars( mysql_result($row, 0, 'codice') );
+	$nome= htmlspecialchars( mysql_result($row, 0, 'nome') );
+	$formato= htmlspecialchars( mysql_result($row, 0, 'formato') );
+	echo $tr;
+        echo $td_class.$codice.$_td;
+        echo $td_class.$nome.$_td;
+        echo $td_class.$formato.$_td;
+        echo $_tr;
+        
+}
 
 ?>
 </table>
