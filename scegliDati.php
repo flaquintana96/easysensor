@@ -23,7 +23,7 @@
 <form action="scegliDati.php" method="POST">
 <?php
 	session_start();
-    require("connessione.php");
+    require "connessione.php";
     $array_campi=array();
     $campi = mysql_query("SELECT `COLUMN_NAME` FROM `INFORMATION_SCHEMA`.`COLUMNS` WHERE `TABLE_NAME` IN ('rilevazione', 'sensore') AND COLUMN_NAME NOT LIKE 'id_%'"); 
    $i=0;
