@@ -100,7 +100,7 @@ function decodificaStringa ($stringa){
         }
     }
     $values_con_virgola=substr($values_con_virgola,0,-1);
-   mysql_query ("INSERT INTO rilevazione ($stringa_query) values($values_con_virgola)") or die(mysql_error());
+   mysql_query ("INSERT INTO rilevazione ($stringa_query) values($values_con_virgola)");
 }
 
 function memorizzaDati($stringa){
