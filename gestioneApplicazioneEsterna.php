@@ -36,9 +36,12 @@ $temp = $row['COLUMN_NAME'];
  
 $i++;
 }
-
+$id_sicuro =  mysql_real_escape_string($_SESSION['id']);
+$codice_sicuro = mysql_real_escape_string($codice);
+$nome_sicuro =  mysql_real_escape_string($nome);
+	$stringa_sicura=  mysql_real_escape_string($stringa);
 echo"<script> alert( 'CODICE APPLICAZIONE ESTERNA: $codice'); </script>";
- mysql_query("INSERT INTO applicazione_esterna (id_clienteFK,codice,nome,preferenze) values ('".$_SESSION['id']."','".$codice."','".$nome."','".$stringa."' )");               
+ mysql_query("INSERT INTO applicazione_esterna (id_clienteFK,codice,nome,preferenze) values ('".$id_sicuro."','".$codice_sicuro."','".$nome_sicuro."','".$stringa_sicura."' )");               
 
 
 
@@ -82,7 +85,8 @@ $select = mysql_query("SELECT * FROM applicazione_esterna");
 $n = mysql_num_rows($select);
 
 if(trovaApplicazioneEsterna($codiceElimina)){
- mysql_query("DELETE FROM applicazione_esterna WHERE codice = '".$codiceElimina."' ");
+	$codiceElimina_sicuro =  mysql_real_escape_string($codicElimina);
+ mysql_query("DELETE FROM applicazione_esterna WHERE codice = '".$codiceElimina_sicuro."' ");
 }
 $select = mysql_query("SELECT * FROM applicazione_esterna");
 $n2 = mysql_num_rows($select);
