@@ -45,7 +45,7 @@ if(isset($_POST['submitAdd']))
 {
 	$ins_tipo=mysql_query("INSERT INTO tipi_sensore (tipo,marca,pattern,array_stringhe,id_sensoreFK,stringa_errore) 
 	values ('".$tipo."','".$marca."','".$pattern."','".$stringhe_campi."','".$fk_sensore."','".$errore."')"); //or die(mysql_error());
-	if($ins_tipo){
+	if(isset($ins_tipo)){
 		$mex="tipologia sensore aggiunto!";
 		Alert($mex);
 	}
@@ -54,7 +54,7 @@ if(isset($_POST['submitAdd']))
 		Alert($mex);
 	}
 }
-if($_POST["submitRimuoviTipo"]){
+if(isset($_POST["submitRimuoviTipo"])){
 
 if(isset($_POST["tipo"])&&isset($_POST["marca"])){
 $tipo = $_POST["tipo"];
@@ -72,7 +72,7 @@ else {
 
 }
 }
-if($_POST["submitVisualizzaTipi"]){
+if(isset($_POST["submitVisualizzaTipi"])){
 	$query = mysql_query("SELECT * FROM tipi_sensore ");
 }
 
@@ -160,7 +160,7 @@ function trovaTipo($tipo,$marca){
 	$_td="</td>";
 	
 $query="";
-if($query){
+if(isset($query)){
 echo $tr;
 $stampa="<th class='th'>TIPOLOGIA</th>";
 echo $stampa;
