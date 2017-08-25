@@ -163,10 +163,14 @@ echo"<th class='th'>TIPO</th>";
 
 while ($row = mysql_fetch_assoc($query)) {
 		echo"<tr>";
-        echo "<td class='td'> ". $row['id_sensore']."</td> ";
-        echo "<td class='td'> ". $row['id_clienteFK']." </td>";
-        echo "<td class='td'> ". $row['marca']." </td> ";
-        echo "<td class='td'> ". $row['tipo']." </td> ";
+	$stampa="<td class='td'> ". $row['id_sensore']."</td> ";
+        echo $stampa;
+	$stampa="<td class='td'> ". $row['id_clienteFK']." </td>";
+        echo $stampa;
+	$stampa="<td class='td'> ". $row['marca']." </td> "
+        echo $stampa;
+	$stampa="<td class='td'> ". $row['tipo']." </td> "
+        echo $stampa;
         echo "</tr>";
         }
 
