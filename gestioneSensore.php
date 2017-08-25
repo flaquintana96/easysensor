@@ -14,7 +14,7 @@ $query = mysql_query("SELECT * FROM sensore");
 
 
 function visualizzaSensori(){
-$query = mysql_query("SELECT * FROM sensore");
+ mysql_query("SELECT * FROM sensore");
 
 }
 
@@ -79,7 +79,7 @@ function rimuoviSensore($id_sensore){
 
 //se esiste lo elimino
 if(trovaSensore($id_sensore)){
-$query = mysql_query("DELETE FROM sensore WHERE id_sensore = '".$id_sensore."' ");
+ mysql_query("DELETE FROM sensore WHERE id_sensore = '".$id_sensore."' ");
 return true;
 }
 
