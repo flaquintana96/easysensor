@@ -158,6 +158,7 @@ return false;
 <table class="table">
 
 <?php
+$query="";
 if($query){
 echo"<tr>";
 echo "<th class='th'>ID CLIENTE</th>";
