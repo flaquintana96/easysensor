@@ -4,7 +4,9 @@ function decodificaStringa ($stringa){
 	$id=0;
     $lunghezza=0;
     $idStringa="";
-	for ($i=0;$i<10;$i++){
+	$fine=10;
+	$inizio=0;
+	for ($i=$inizio;$i<$fine;$i++){
     	$idStringa=$idStringa.$stringa[$i];
     }   
 	
@@ -37,7 +39,8 @@ function decodificaStringa ($stringa){
     $numero=explode(',',$pattern_estratto);
     $lunghezza=0;
     $stringa_da_inserire="";
-	$j=10+ strlen($tipo_estratto) +strlen($marca_estratta)+$lunghezza;
+	$pref=10;
+	$j=$pref+ strlen($tipo_estratto) +strlen($marca_estratta)+$lunghezza;
     $k=0;
     for ($i=0;$i<count($numero);$i++){
       	$j=$j+$lunghezza;
@@ -96,7 +99,9 @@ function decodificaStringa ($stringa){
         }
 	}
     //elimino l'ultima virgola
-    if($erroreTrovato)$array_values_senza_virgola[4]=1;else $array_values_senza_virgola[4]='0';
+	$indic=4;
+	$valll=1;
+    if($erroreTrovato)$array_values_senza_virgola[$indic]=$valll;else $array_values_senza_virgola[4]='0';
     for($i=0;$i<count($stringa_query_senza_virgole);$i++){
     	$array_values_senza_virgola[0]=$idStringa;//avvaloro FK  
        	if($array_values_senza_virgola[$i]!=NULL){
