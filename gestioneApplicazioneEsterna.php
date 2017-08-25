@@ -182,7 +182,9 @@ $checkbox = mysql_query("SELECT `COLUMN_NAME` FROM `INFORMATION_SCHEMA`.`COLUMNS
 while($row = mysql_fetch_assoc($checkbox)){
 
 $temp = $row['COLUMN_NAME'];
- echo $temp."<input type='checkbox'  name='test$temp' value = '$temp'>";
+	$pre_input_checkbox="<input type='checkbox'  name='test";
+	$post_input_checkbox=" value = '$temp'>";
+ echo $temp.$pre_input_checkbox.$temp.$post_input_checkbox;
 
 }
 
