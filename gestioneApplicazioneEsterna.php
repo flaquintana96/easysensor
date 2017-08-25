@@ -136,7 +136,7 @@ $vis = visualizzaApplicazioniEsterne();
 
 function visualizzaApplicazioniEsterne(){
 
-$query = mysql_query("SELECT * FROM applicazione_esterna WHERE id_clienteFK = '".$_SESSION['id']."' ");
+$query = mysql_query("SELECT * FROM applicazione_esterna WHERE id_clienteFK = '".mysql_real_escape_string($_SESSION['id'])."' ");
 return $query;
 }
 
