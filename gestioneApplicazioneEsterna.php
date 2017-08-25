@@ -16,7 +16,6 @@ function visualizzaDashboard(){
 function scegliDatiTrasferimento(){
 $stringa ="0000000000000000";
 
-global $codice;
 
 $checkbox = mysql_query("SELECT `COLUMN_NAME` FROM `INFORMATION_SCHEMA`.`COLUMNS` WHERE `TABLE_NAME` IN ('rilevazione', 'sensore') AND COLUMN_NAME NOT LIKE 'id_%'"); 
 
@@ -82,7 +81,6 @@ echo "<script> alert('Applicazione rimossa!'); </script>";
 
 
 function autorizzaApplicazioneEsterna(){
-global $codice;
 $codice = rand(1,1000000000);
 
 }
@@ -203,7 +201,6 @@ $temp = $row['COLUMN_NAME'];
 <table class="table">
 
 <?php
-global $vis;
 if($vis){
 
 echo"<tr>";
