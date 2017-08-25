@@ -7,15 +7,15 @@ $idutente = $_SESSION['id'];
 
 
 $codice=0;
-$radio="";
-$vis="";
+$radio='';
+$vis='';
 
 function visualizzaDashboard(){
 
 }
 
 function scegliDatiTrasferimento(){
-$stringa ="0000000000000000";
+$stringa ='0000000000000000';
 
 
 $checkbox = mysql_query("SELECT `COLUMN_NAME` FROM `INFORMATION_SCHEMA`.`COLUMNS` WHERE `TABLE_NAME` IN ('rilevazione', 'sensore') AND COLUMN_NAME NOT LIKE 'id_%'"); 
@@ -45,8 +45,8 @@ $i++;
 	
 	
 	
-	$stmt = $dbh->prepare("INSERT INTO (id_clienteFK,codice,nome,preferenze) 
-VALUES (:id, :cod, :nome, :preferenze)");
+	$stmt = $dbh->prepare('INSERT INTO (id_clienteFK,codice,nome,preferenze) 
+VALUES (:id, :cod, :nome, :preferenze)');
 $stmt->bindParam('id', $id_sicuro);
 $stmt->bindParam('cod', $codice_sicuro);
 $stmt->bindParam(':nome', $nome_sicuro);
@@ -64,17 +64,17 @@ $stmt->execute();
 
 
 //PREMUTO IL BOTTONE ELIMINA AUTORIZZAZIONE
-if(isset($_POST["submitEliminaAutorizzazione"])){
+if(isset($_POST['submitEliminaAutorizzazione'])){
 
 if(isset($_POST["codice"])){
-$codiceElimina = mysql_real_escape_string($_POST["codice"]);
+$codiceElimina = mysql_real_escape_string($_POST['codice']);
 
 if( !eliminaAutorizzazione($codiceElimina)){
-	$mex="Codice non trovato!";
+	$mex='Codice non trovato!';
 	Alert($mex);
 }
 else {
-$mex="Applicazione rimossa!";
+$mex='Applicazione rimossa!';
 	Alert($mex);
 }
 
@@ -96,14 +96,14 @@ $codice = rand(1,1000000000);
 function eliminaAutorizzazione($codiceElimina){
 $n;
 $n2;
-$select = mysql_query("SELECT * FROM applicazione_esterna");
+$select = mysql_query('SELECT * FROM applicazione_esterna');
 $n = mysql_num_rows($select);
 
 if(trovaApplicazioneEsterna(mysql_real_escape_string($codicElimina))){
 	$codiceElimina_sicuro =  $codiceElimina;
  mysql_query("DELETE FROM applicazione_esterna WHERE codice = '".$codiceElimina_sicuro."' ");
 }
-$select = mysql_query("SELECT * FROM applicazione_esterna");
+$select = mysql_query('SELECT * FROM applicazione_esterna');
 $n2 = mysql_num_rows($select);
 
 if($n > $n2){
@@ -134,7 +134,7 @@ scegliDatiTrasferimento();
 }
 
 //PREMUTO IL BOTTONE VISUALIZZA APPLICAZIONI ESTERNE
-if(isset($_POST["submitVisualizzaApplicazioniEsterne"])){
+if(isset($_POST['submitVisualizzaApplicazioniEsterne'])){
 $vis = visualizzaApplicazioniEsterne();
 }
 
@@ -209,10 +209,10 @@ $temp = htmlspecialchars( mysql_result($row, 0, 'COLUMN_NAME') );
 <table class="table">
 
 <?php
-	$tr="<tr>";
-	$_tr="</tr>";
+	$tr='<tr>';
+	$_tr='</tr>';
 	$td_class="<td class='td'>";
-	$_td="</td>";
+	$_td='</td>';
 	
 if(isset($vis)){
 
