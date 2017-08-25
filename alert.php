@@ -3,6 +3,7 @@
 function Alert($mex){
   $pre="<script> alert(";
  	$post="); </script>";
- 	echo $pre.$mex.$post;
+  $stampa=$pre.$mex.$post;
+ 	echo $stampa;
   }
   ?>
