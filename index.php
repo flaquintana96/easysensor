@@ -72,11 +72,15 @@ return true; //SE C'È IL COGNOME VAI IN ADMIN.PHP
 }
 
 else{
-echo"<script> alert('Username o password errati!'); </script>";
+$mess='Username o password errati!';
+chiamaAlert($mess);
 unset($_SESSION['id']);
 unset($_SESSION['nome']);
 }
 
+}
+function chiamaAlert($mess){
+	echo "<script> alert($mess); </script>";
 }
 ?>
 
