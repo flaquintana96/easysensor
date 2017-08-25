@@ -25,9 +25,9 @@ if($_POST["submitAggiungiSensore"]){
 
 if(isset($_POST["id_clienteFK"]) && isset($_POST["marca"]) && isset($_POST["tipo"])) {
 
-$id_clienteFK = $_POST["id_clienteFK"];
-$marca = $_POST["marca"];
-$tipo = $_POST["tipo"];
+$id_clienteFK = mysql_real_escape_string( $_POST["id_clienteFK"]);
+$marca = mysql_real_escape_string( $_POST["marca"]);
+$tipo = mysql_real_escape_string( $_POST["tipo"]);
 
 
 if(aggiungiSensore($id_clienteFK, $marca, $tipo)){
@@ -45,13 +45,13 @@ echo "<script> alert('Proprietario non esistente!'); </script>";
 if($_POST["submitAggiungiRilevazione"]){
 
 if(isset($_POST["id_sensoreFK"]) && isset($_POST["rilevazione"]) && isset($_POST["data"])  && isset($_POST["ora"])  ){
-$id_sensoreFK = $_POST["id_sensoreFK"];
-$rilevazione = $_POST["rilevazione"];
-$data = $_POST["data"];
-$ora = $_POST["ora"];
-if(isset($_POST["errore"]))$errore =$_POST["errore"];
+$id_sensoreFK = mysql_real_escape_string($_POST["id_sensoreFK"]);
+$rilevazione = mysql_real_escape_string( $_POST["rilevazione"]);
+$data = mysql_real_escape_string($_POST["data"]);
+$ora = mysql_real_escape_string($_POST["ora"]);
+if(isset($_POST["errore"]))$errore = mysql_real_escape_string($_POST["errore"]);
 else $errore=0;
-if(isset($_POST["descrizione"]))$descrizione = $_POST["descrizione"];
+if(isset($_POST["descrizione"]))$descrizione = mysql_real_escape_string($_POST["descrizione"]);
 else $descrizione=NULL;
 
 
@@ -69,9 +69,9 @@ echo"<script> alert('Errore!'); </alert>";
 if($_POST["submitAggiungiCliente"]){
 //aggiungere controlli lunghezza
 if(isset($_POST["nome"]) && isset($_POST["username"]) && isset($_POST["password"])){
-$username = $_POST["username"];
-$password = $_POST["password"];
-$nome = $_POST["nome"];
+$username = mysql_real_escape_string($_POST["username"]);
+$password = mysql_real_escape_string($_POST["password"]);
+$nome = mysql_real_escape_string($_POST["nome"]);
 
 if(aggiungiCliente( $username, $password, $nome)) {
 echo "<script> alert('Cliente aggiunto!'); </script>";
