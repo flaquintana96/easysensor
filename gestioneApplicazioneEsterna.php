@@ -188,7 +188,9 @@ while($row = mysql_fetch_assoc($checkbox)){
 $temp = htmlspecialchars( mysql_result($row, 0, 'COLUMN_NAME') );
 	$pre_input_checkbox="<input type='checkbox'  name='test";
 	$post_input_checkbox=" value = '$temp'>";
- echo $temp.$pre_input_checkbox.$temp.$post_input_checkbox;
+	 $stampa=$temp.$pre_input_checkbox.$temp.$post_input_checkbox;
+	echo $stampa;
+	
 
 }
 
@@ -230,9 +232,12 @@ while ($row = mysql_fetch_assoc($vis)) {
 	$nome= htmlspecialchars( mysql_result($row, 0, 'nome') );
 	$formato= htmlspecialchars( mysql_result($row, 0, 'formato') );
 	echo $tr;
-        echo $td_class.$codice.$_td;
-        echo $td_class.$nome.$_td;
-        echo $td_class.$formato.$_td;
+        $stampa=$td_class.$codice.$_td;
+	echo $stampa;
+        $stampa=$td_class.$nome.$_td;
+	echo $stampa;
+        $stampa=$td_class.$formato.$_td;
+	echo $stampa;
         echo $_tr;
         
 }
