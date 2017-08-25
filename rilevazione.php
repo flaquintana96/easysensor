@@ -4,9 +4,9 @@ function decodificaStringa ($stringa){
 	$id=0;
     $lunghezza=0;
     $idStringa="";
-	$fine=10;
-	$inizio=0;
-	for ($i=$inizio;$i<$fine;$i++){
+	define('10','fine');
+	define('0','inizio');
+	for ($i=inizio;$i<fine;$i++){
     	$idStringa=$idStringa.$stringa[$i];
     }   
 	
