@@ -1,6 +1,6 @@
 <?php
 //PAGINA DI LOGIN
-require("connessione.php");
+require "connessione.php";
 session_start();
 
 //PREMUTO BOTTONE LOGIN
