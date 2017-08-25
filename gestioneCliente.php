@@ -10,7 +10,7 @@ $id_cliente="";
 
 //PREMUTO IL BOTTONE AGGIUNGI CLIENTE
 
-if($_POST["submitAggiungiCliente"]){
+if(isset($_POST["submitAggiungiCliente"])){
 
 if(isset($_POST["nome"]) && isset($_POST["username"]) && isset($_POST["password"])){
 $username = $_POST["username"];
@@ -29,7 +29,7 @@ echo"<script> alert('Username esistente!'); </script>";
 
 
 //PREMUTO IL BOTTONE ELIMINA CLIENTE
-if($_POST["submitRimuoviCliente"]){
+if(isset($_POST["submitRimuoviCliente"])){
 
 if(isset($_POST["id_cliente"])){
 $id_cliente = $_POST["id_cliente"];
@@ -43,7 +43,7 @@ echo "<script> alert('Cliente rimosso!'); </script>";
 
 }
 }
-if($_POST["submitVisualizzaClienti"]){
+if(isset($_POST["submitVisualizzaClienti"])){
 $query = mysql_query("SELECT id_cliente, username, password,nome FROM utente WHERE cognome = '' ");
 
 }
