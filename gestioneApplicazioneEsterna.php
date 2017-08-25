@@ -65,7 +65,7 @@ $stmt->execute();
 if($_POST["submitEliminaAutorizzazione"]){
 
 if(isset($_POST["codice"])){
-$codiceElimina = $_POST["codice"];
+$codiceElimina = mysql_real_escape_string($_POST["codice"]);
 
 if( !eliminaAutorizzazione($codiceElimina)){
 echo "<script> alert('Codice non trovato!'); </script>";
