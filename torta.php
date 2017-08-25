@@ -1,8 +1,8 @@
 <?php
 session_start();
-require("connessione.php");
-include('g/phpgraphlib.php');
-include('g/phpgraphlib_pie.php');
+require "connessione.php";
+include 'g/phpgraphlib.php';
+include 'g/phpgraphlib_pie.php';
 $sql = "SELECT COUNT(errore) AS frequenza_errori FROM ((rilevazione inner join sensore ON rilevazione.id_sensoreFK=sensore.id_sensore) 
 inner join utente ON sensore.id_clienteFK=utente.id_cliente)
 WHERE id_cliente=".mysql_real_escape_string($_SESSION["id"])." AND errore=1 GROUP BY errore";
