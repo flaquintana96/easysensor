@@ -1,11 +1,7 @@
 <?php
 require "connessione.php";
 
-function Alert($mex){
-	$pre="<script> alert(";
-	$post="); </script>";
-	echo $pre.$mex.$post;
-}
+require "alert.php";
 
 if (isset($_POST['tipo'])){
 	$tipo=$_POST['tipo'];
