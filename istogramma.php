@@ -1,4 +1,3 @@
-<?php
 session_start();
 require "connessione.php";
 include 'g/phpgraphlib.php';
@@ -25,4 +24,3 @@ $graph->setTitle("Istogramma della frequenza delle rilevazioni organizzate per t
 $graph->setGradient("lime", "green");
 $graph->setBarOutlineColor("black");
 $graph->createGraph();
-?>
