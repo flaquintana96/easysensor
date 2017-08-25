@@ -1,8 +1,8 @@
 <?php
 session_start();
-require("connessione.php");
-include('g/phpgraphlib.php');
-include('g/phpgraphlib_pie.php');
+require "connessione.php";
+include 'g/phpgraphlib.php';
+include 'g/phpgraphlib_pie.php';
 
 $graph = new PHPGraphLib(550,630);
 $dataArray=array();
