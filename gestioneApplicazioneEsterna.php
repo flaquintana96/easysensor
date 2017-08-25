@@ -68,7 +68,9 @@ echo "<script> alert('Applicazione rimossa!'); </script>";
 
 
 function autorizzaApplicazioneEsterna(){
-$codice = rand(1,1000000000);
+$min=1;
+$max=1000000000;
+$codice = rand($min,$max);
 
 }
 
