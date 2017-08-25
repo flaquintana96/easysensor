@@ -1,22 +1,22 @@
 <?php
-require "connessione.php";
-require "alert.php";
+require ìconnessione.php';
+require 'alert.php';
 session_start();
-$nome ="";
-$username="";
-$password="";
-$id_cliente="";
+$nome ='';
+$username='';
+$password='';
+$id_cliente='';
 
 
 
 //PREMUTO IL BOTTONE AGGIUNGI CLIENTE
 
-if(isset($_POST["submitAggiungiCliente"])){
+if(isset($_POST['submitAggiungiCliente'])){
 
-if(isset($_POST["nome"]) && isset($_POST["username"]) && isset($_POST["password"])){
-$username = mysql_real_escape_string($_POST["username"]);
-$password =  mysql_real_escape_string($_POST["password"]);
-$nome =  mysql_real_escape_string($_POST["nome"]);
+if(isset($_POST['nome']) && isset($_POST['username']) && isset($_POST['password'])){
+$username = mysql_real_escape_string($_POST['username']);
+$password =  mysql_real_escape_string($_POST['password']);
+$nome =  mysql_real_escape_string($_POST['nome']);
 
 if(aggiungiCliente( $username, $password, $nome)) {
 $mess='Cliente aggiunto';
@@ -31,10 +31,10 @@ Alert($mess);}
 
 
 //PREMUTO IL BOTTONE ELIMINA CLIENTE
-if(isset($_POST["submitRimuoviCliente"])){
+if(isset($_POST['submitRimuoviCliente'])){
 
-if(isset($_POST["id_cliente"])){
-$id_cliente = $_POST["id_cliente"];
+if(isset($_POST['id_cliente'])){
+$id_cliente = $_POST['id_cliente'];
 
 if(!rimuoviCliente($id_cliente)){
 $mess='Cliente non trovato';
@@ -45,7 +45,7 @@ Alert($mess);}
 
 }
 }
-if(isset($_POST["submitVisualizzaClienti"])){
+if(isset($_POST['submitVisualizzaClienti'])){
 $query = mysql_query("SELECT id_cliente, username, password,nome FROM utente WHERE cognome = '' ");
 
 }
@@ -158,28 +158,43 @@ return false;
 <table class="table">
 
 <?php
-$query="";
+	$tr='<tr>';
+	$_tr='</tr>';
+	$td_class='<td class='td'>';
+	$_td='</td>';
+	
+$query='';
 if($query){
-echo"<tr>";
-echo "<th class='th'>ID CLIENTE</th>";
-echo "<th class='th'>NOME AZIENDA</th>";
-echo "<th class='th'>USERNAME</th>";
-echo "<th class='th'>PASSWORD</th>";
-echo"</tr>";
+	
+echo $tr;
+ $stampa='<th class='th'>ID CLIENTE</th>';
+	echo $stampa;
+$stampa='<th class='th'>NOME AZIENDA</th>';
+	echo $stampa;
+ $stampa='<th class='th'>USERNAME</th>';
+	echo $stampa;
+ $stampa='<th class='th'>PASSWORD</th>';
+	echo $stampa;
+echo $_tr;
+	
 }
 
 while ($row = mysql_fetch_assoc($query)) {
-		echo"<tr>";
-	$stampa="<td class ='td'> ". $row['id_cliente']."</td> ";
-        echo $stampa;
-	$stampa="<td class ='td'> ". $row['nome']." </td>";
-        echo $stampa;
-	$stampa="<td class ='td'> ". $row['username']." </td> ";
-        echo $stampa;
-	$stampa="<td class ='td'> ". $row['password']." </td> ";
-        echo $stampa;
-        echo "</tr>";
-        }
+	$password= htmlspecialchars( mysql_result($row, 0, 'password') );
+	$nome= htmlspecialchars( mysql_result($row, 0, 'nome') );
+	$id_cliente= htmlspecialchars( mysql_result($row, 0, 'id_cliente') );
+	$username= htmlspecialchars( mysql_result($row, 0, 'username') );
+	echo $tr;
+        $stampa=$td_class.$id_cliente.$_td;
+	echo $stampa;
+	$stampa=$td_class.$nome.$_td;
+	echo $stampa;
+        $stampa=$td_class.$username.$_td;
+	echo $stampa;
+        $stampa=$td_class.$password.$_td;
+	echo $stampa;
+        echo $_tr;
+}
 
 ?>
 </table>
