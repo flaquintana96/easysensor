@@ -34,7 +34,8 @@
     $i=0;
     echo"<div align='center'>";
     for($i=0;$i<count($array_campi);$i++){
-    	 echo"<font class='scritta'> $array_campi[$i]</font>"."<input type='checkbox' name='$array_campi[$i]'>";
+	 $stampa="<font class='scritta'> $array_campi[$i]</font>"."<input type='checkbox' name='$array_campi[$i]'>"
+    	 echo $stampa;
          
     }
    
@@ -63,7 +64,8 @@ echo"<tr>";
     {
     echo"<tr>";
        for($i=0;$i<count($righe);$i++){
-       echo"<td align='center' class='td'>". $righe[$arrpost[$i]] ."</td>";
+	$stampa="<td align='center' class='td'>". $righe[$arrpost[$i]] ."</td>"
+       echo $stampa;
        }
        echo"</tr>";
     }
