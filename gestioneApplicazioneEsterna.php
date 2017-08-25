@@ -38,7 +38,7 @@ $i++;
 }
 
 echo"<script> alert( 'CODICE APPLICAZIONE ESTERNA: $codice'); </script>";
-$query = mysql_query("INSERT INTO applicazione_esterna (id_clienteFK,codice,nome,preferenze) values ('".$_SESSION['id']."','".$codice."','".$nome."','".$stringa."' )");               
+ mysql_query("INSERT INTO applicazione_esterna (id_clienteFK,codice,nome,preferenze) values ('".$_SESSION['id']."','".$codice."','".$nome."','".$stringa."' )");               
 
 
 
@@ -82,7 +82,7 @@ $select = mysql_query("SELECT * FROM applicazione_esterna");
 $n = mysql_num_rows($select);
 
 if(trovaApplicazioneEsterna($codiceElimina)){
-$query = mysql_query("DELETE FROM applicazione_esterna WHERE codice = '".$codiceElimina."' ");
+ mysql_query("DELETE FROM applicazione_esterna WHERE codice = '".$codiceElimina."' ");
 }
 $select = mysql_query("SELECT * FROM applicazione_esterna");
 $n2 = mysql_num_rows($select);
