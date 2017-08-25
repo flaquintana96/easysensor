@@ -60,7 +60,7 @@ $i++;
                             WHERE `applicazione_esterna`.`codice` = ".mysql_real_escape_string($codice)."";
                            
 //QUERY PER AVERE I DATI
-$totale = mysql_query($querytot);
+$totale = mysql_query(addslashes($querytot));
 
 $file = fopen( $nomefile , "w");
 
