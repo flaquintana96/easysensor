@@ -1,5 +1,10 @@
 <?php
 require "connessione.php";
+
+function Alert($mex){
+	echo "<script> alert(".$mex."); </script>";
+}
+
 if (isset($_POST['tipo'])){
 	$tipo=$_POST['tipo'];
 }    
@@ -43,10 +48,12 @@ if(isset($_POST['submitAdd']))
 	$ins_tipo=mysql_query("INSERT INTO tipi_sensore (tipo,marca,pattern,array_stringhe,id_sensoreFK,stringa_errore) 
 	values ('".$tipo."','".$marca."','".$pattern."','".$stringhe_campi."','".$fk_sensore."','".$errore."')"); //or die(mysql_error());
 	if($ins_tipo){
-	echo "<script> alert('tipologia sensore aggiunto!'); </script>";
+		$mex="tipologia sensore aggiunto!";
+		Alert($mex);
 	}
 	else{
-	echo "<script> alert('tipologia sensore non valido!'); </script>";
+		$mex="tipologia sensore non valido!";
+		Alert($mex);
 	}
 }
 if($_POST["submitRimuoviTipo"]){
@@ -56,10 +63,13 @@ $tipo = $_POST["tipo"];
 $marca = $_POST["marca"];
 
 if(!rimuoviTipo($tipo,$marca)){
-echo "<script> alert('Tipologia di sensore non trovata!'); </script>";
+	$mex="Tipologia di sensore non trovata!";
+	Alert($mex);
 }
 else {
-echo "<script> alert('Tipologia di sensore rimossa!'); </script>";
+	$mex="Tipologia di sensore rimossa!";
+	Alert($mex);
+
 }
 
 }
