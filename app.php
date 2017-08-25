@@ -30,7 +30,8 @@ $_SESSION['prec'] = $n;
 
 
 //BLOCCO PER AVERE LE PREFERENZE
-$sql = mysql_query("SELECT * FROM applicazione_esterna WHERE codice = '".$codice."' ");
+	$queryapp = "SELECT * FROM applicazione_esterna WHERE codice = '".$codice."' "
+$sql = mysql_query(addslashes($queryapp));
 $row = mysql_fetch_assoc($sql);
 $nomefile = "Rilevazioni.".$row['formato'];
 //echo "<script> alert($nomefile); </script>";
