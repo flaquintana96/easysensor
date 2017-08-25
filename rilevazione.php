@@ -1,5 +1,5 @@
 <?php
-require ("connessione.php");
+require "connessione.php";
 function decodificaStringa ($stringa){
 	$id=0;
     $lunghezza=0;
