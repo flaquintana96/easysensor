@@ -1,22 +1,22 @@
 <?php
 require "connessione.php";
 
-$nome;
-$username;
-$password;
-$id_cliente;
+$nome="";
+$username="";
+$password="";
+$id_cliente="";
 
-$marca;
-$tipo;
-$pattern;
-$id_sensore;
+$marca="";
+$tipo="";
+$pattern="";
+$id_sensore="";
 
-$id_sensoreFK;
-$rilevazione;
-$data;
-$ora;
-$errore;
-$descrizione;
+$id_sensoreFK="";
+$rilevazione="";
+$data="";
+$ora="";
+$errore="";
+$descrizione="";
 
 
 
