@@ -6,9 +6,12 @@ function decodificaStringa ($stringa){
     $idStringa="";
 	for ($i=0;$i<10;$i++){
     	$idStringa=$idStringa.$stringa[$i];
-    }            
-    $marca=mysql_query ("SELECT marca FROM sensore WHERE id_sensore=$idStringa");
-    $tipo=mysql_query ("SELECT tipo FROM sensore WHERE id_sensore=$idStringa");
+    }   
+	$querymarca = "SELECT marca FROM sensore WHERE id_sensore=$idStringa";
+    $marca=mysql_query (addslashes($querymarca));
+	
+	$querytipo = "SELECT tipo FROM sensore WHERE id_sensore=$idStringa";
+    $tipo=mysql_query (addslashes($querytipo));
     
       
    	$marca_stringa=mysql_fetch_assoc($marca);
@@ -17,9 +20,11 @@ function decodificaStringa ($stringa){
     $tipo_stringa=mysql_fetch_assoc($tipo);
 	$tipo_estratto=$tipo_stringa["tipo"];
    
-
-  	$pattern=mysql_query ("SELECT pattern FROM tipi_sensore WHERE tipo='".$tipo_estratto."' AND marca='".$marca_estratta."'");
-    $array_stringhe=mysql_query ("SELECT array_stringhe FROM tipi_sensore WHERE tipo='".$tipo_estratto."' AND marca='".$marca_estratta."'");
+	$querypattern = "SELECT pattern FROM tipi_sensore WHERE tipo='".$tipo_estratto."' AND marca='".$marca_estratta."'";
+  	$pattern=mysql_query (addslashes($querypattern));
+	
+	$queryarraystringhe = "SELECT array_stringhe FROM tipi_sensore WHERE tipo='".$tipo_estratto."' AND marca='".$marca_estratta."'";
+    $array_stringhe=mysql_query (addslashes($queryarraystringhe));
    	
     $pattern_stringa=mysql_fetch_assoc($pattern);
 	$pattern_estratto=$pattern_stringa["pattern"];
