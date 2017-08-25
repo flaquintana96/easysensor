@@ -1,6 +1,7 @@
 <?php
 //PAGINA DI LOGIN
 require "connessione.php";
+require "alert.php";
 session_start();
 
 global $username;
@@ -73,14 +74,11 @@ return true; //SE C'È IL COGNOME VAI IN ADMIN.PHP
 
 else{
 $mess='Username o password errati!';
-chiamaAlert($mess);
+Alert($mess);
 unset($_SESSION['id']);
 unset($_SESSION['nome']);
 }
 
-}
-function chiamaAlert($mess){
-	echo "<script> alert($mess); </script>";
 }
 ?>
 
