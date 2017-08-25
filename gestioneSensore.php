@@ -1,6 +1,6 @@
 <?php
 require "connessione.php";
-
+require "alert.php";
 
 $marca="";
 $tipo="";
@@ -32,11 +32,11 @@ $tipo = $_POST["tipo"];
 
 
 if(aggiungiSensore($id_clienteFK, $marca, $tipo/*, $pattern*/)){
-echo "<script> alert('sensore aggiunto!'); </script>";
-}
+$mess='Sensore aggiunto';
+Alert($mess);}
 else{
-echo "<script> alert('Proprietario non esistente!'); </script>";
-}
+$mess='Proprietario non esistente';
+Alert($mess);}
 
 }
 }
@@ -48,11 +48,11 @@ if(isset($_POST["id_sensore"])){
 $id_sensore = $_POST["id_sensore"];
 
 if(!rimuoviSensore($id_sensore)){
-echo"<script> alert('Sensore non trovato!'); </script>";
-}
+$mess='Sensore non trovato';
+Alert($mess);}
 else{
-echo"<script> alert('Sensore rimosso!'); </script>";
-}
+$mess='Sensore rimosso';
+Alert($mess);}
 
 }
 }
