@@ -1,0 +1,74 @@
+body{
+ background-color:#e8e8e8; /* grigio */
+/* background-color:#e9ffd8; /* verde */
+ /*background-color:#f6ff9b; /* giallo */
+/*background-color:#ffd293; /* arancione */
+/*background-color:#dba0d4; /* viola */
+
+}
+
+
+.table {
+    border-collapse: collapse;
+}
+
+.th{
+	color:#42a1f4;
+    border: 1px solid #42a1f4;
+}
+.td{
+color:#42a1f4;
+    border: 1px solid #42a1f4;
+}
+
+
+.casella{
+width:60%;
+
+ border-radius: 5px;
+  border: 2px solid #42a1f4;
+
+}
+
+
+h2{
+
+width:100%;
+padding:15px;
+background-color:#42a1f4;
+color:#FFF
+
+}
+
+h3{
+
+color:#42a1f4;
+font-weight:bold; 
+}
+
+/*th{
+
+color:#42a1f4;
+font-weight:bold; 
+}
+
+td{
+
+color:#42a1f4;
+
+}
+*/
+
+.bottone{
+background-color:#42a1f4;
+padding: 5px;
+border: none;
+border-radius:5px;
+color:#fff
+}
+
+.scritta{
+color:#42a1f4;
+}
+
+
