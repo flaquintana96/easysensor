@@ -8,7 +8,7 @@ global $username;
 global $password;
 
 //PREMUTO BOTTONE LOGIN
-if($_POST['login']){
+if(isset($_POST['login'])){
 if( isset($_POST['username']) && isset($_POST['username'])){
 $username = $_POST['username'];
 $password = $_POST['password'];
@@ -25,7 +25,7 @@ header("location:cliente.php");
 }
 
 //PREMUTO BOTTONE LOGIN APPLICAZIONE ESTERNA
-if($_POST['loginapp']){
+if(isset($_POST['loginapp'])){
 
 if( isset($_POST['codice'])){
 $codice = $_POST['codice'];
