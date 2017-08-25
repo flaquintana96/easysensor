@@ -3,6 +3,9 @@
 require "connessione.php";
 session_start();
 
+global $username;
+global $password;
+
 //PREMUTO BOTTONE LOGIN
 if($_POST['login']){
 if( isset($_POST['username']) && isset($_POST['username'])){
@@ -43,8 +46,7 @@ header("location: app.php");
 }
 
 function richiediAutenticazione(){
-global $username;
-global $password;
+
 
 unset($_SESSION['id']);
 unset($_SESSION['nome']);
