@@ -39,7 +39,7 @@
     }
    
     echo "<input type=submit class='bottone' value='Scegli dati'></form><br>";
-   
+   $campi_query="";
    for($i=0;$i<count($array_campi);$i++){
 	if(isset($_POST[$array_campi[$i]])){
     	
