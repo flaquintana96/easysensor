@@ -1,7 +1,6 @@
 <?php
 require 'connessione.php';
 require 'alert.php';
-require 'security.php';
 session_start();
 
 $idutente = $_SESSION['id'];
