@@ -1,6 +1,6 @@
 <?php
-require "connessione.php";
-require "alert.php";
+require 'connessione.php';
+require 'alert.php';
 
 if (isset($_POST['tipo'])){
 	$tipo=$_POST['tipo'];
@@ -8,7 +8,7 @@ if (isset($_POST['tipo'])){
 if (isset($_POST['marca'])){
 	$marca=$_POST['marca'];
 }  
-$stringhe_campi="";
+$stringhe_campi='';
 if (isset($_POST['array_di_stringhe'])){
 	$stringhe_campi=$_POST['array_di_stringhe'];
 }  
@@ -22,7 +22,7 @@ if (isset($_POST['fk_sensore'])){
 if (isset($_POST['stringa_errore'])){
 	$errore=$_POST['stringa_errore'];
 } 
-$colonne_tab_rilevazione=mysql_query("SHOW COLUMNS FROM rilevazione");
+$colonne_tab_rilevazione=mysql_query('SHOW COLUMNS FROM rilevazione');
 $field=array();
 $i=0;
 while($righe=mysql_fetch_assoc($colonne_tab_rilevazione)){
@@ -46,38 +46,38 @@ if(isset($_POST['submitAdd']))
 	$ins_tipo=mysql_query("INSERT INTO tipi_sensore (tipo,marca,pattern,array_stringhe,id_sensoreFK,stringa_errore) 
 	values ('".$tipo."','".$marca."','".$pattern."','".$stringhe_campi."','".$fk_sensore."','".$errore."')"); //or die(mysql_error());
 	if(isset($ins_tipo)){
-		$mex="tipologia sensore aggiunto!";
+		$mex='tipologia sensore aggiunto!';
 		Alert($mex);
 	}
 	else{
-		$mex="tipologia sensore non valido!";
+		$mex='tipologia sensore non valido!';
 		Alert($mex);
 	}
 }
-if(isset($_POST["submitRimuoviTipo"])){
+if(isset($_POST['submitRimuoviTipo'])){
 
-if(isset($_POST["tipo"])&&isset($_POST["marca"])){
-$tipo = $_POST["tipo"];
-$marca = $_POST["marca"];
+if(isset($_POST['tipo'])&&isset($_POST['marca'])){
+$tipo = $_POST['tipo'];
+$marca = $_POST['marca'];
 
 if(!rimuoviTipo($tipo,$marca)){
-	$mex="Tipologia di sensore non trovata!";
+	$mex='Tipologia di sensore non trovata!';
 	Alert($mex);
 }
 else {
-	$mex="Tipologia di sensore rimossa!";
+	$mex='Tipologia di sensore rimossa!';
 	Alert($mex);
 
 }
 
 }
 }
-if(isset($_POST["submitVisualizzaTipi"])){
-	$query = mysql_query("SELECT * FROM tipi_sensore ");
+if(isset($_POST['submitVisualizzaTipi'])){
+	$query = mysql_query('SELECT * FROM tipi_sensore ');
 }
 
 function visualizzaTipi(){
-	 mysql_query("SELECT * FROM tipi_sensore ");
+	 mysql_query('SELECT * FROM tipi_sensore ');
 }
 
 function rimuoviTipo($tipo,$marca){
@@ -154,12 +154,12 @@ function trovaTipo($tipo,$marca){
 <table class="table">
 
 <?php
-	$tr="<tr>";
-	$_tr="</tr>";
+	$tr='<tr>';
+	$_tr='</tr>';
 	$td_class="<td class='td'>";
-	$_td="</td>";
+	$_td='</td>';
 	
-$query="";
+$query='';
 if(isset($query)){
 echo $tr;
 $stampa="<th class='th'>TIPOLOGIA</th>";
