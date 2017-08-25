@@ -1,22 +1,22 @@
 <?php
 require "connessione.php";
 
-$nome="";
-$username="";
-$password="";
-$id_cliente="";
+$nome;
+$username;
+$password;
+$id_cliente;
 
-$marca="";
-$tipo="";
-$pattern="";
-$id_sensore="";
+$marca;
+$tipo;
+$pattern;
+$id_sensore;
 
-$id_sensoreFK="";
-$rilevazione="";
-$data="";
-$ora="";
-$errore="";
-$descrizione="";
+$id_sensoreFK;
+$rilevazione;
+$data;
+$ora;
+$errore;
+$descrizione;
 
 
 
@@ -31,11 +31,11 @@ $tipo = mysql_real_escape_string( $_POST["tipo"]);
 
 
 if(aggiungiSensore($id_clienteFK, $marca, $tipo)){
-echo "<script> alert('sensore aggiunto!'); </script>";
-}
+$mess='Sensore aggiunto';
+ chiamaAlert($mess);}
 else{
-echo "<script> alert('Proprietario non esistente!'); </script>";
-}
+$mess='Proprietario non esistente';
+ chiamaAlert($mess);}
 
 }
 }
@@ -56,11 +56,11 @@ else $descrizione=NULL;
 
 
 if(aggiungiRilevazione( $id_sensoreFK, $rilevazione, $data, $ora,  $errore, $descrizione)) {
-echo "<script> alert('Rilevazione aggiunta!'); </script>";
-}
+$mess='Rilevazione aggiunta';
+ chiamaAlert($mess);}
 else {
-echo"<script> alert('Errore!'); </alert>";
-}
+$mess='Errore!';
+ chiamaAlert($mess);}
 }
 }
 
@@ -74,10 +74,11 @@ $password = mysql_real_escape_string($_POST["password"]);
 $nome = mysql_real_escape_string($_POST["nome"]);
 
 if(aggiungiCliente( $username, $password, $nome)) {
-echo "<script> alert('Cliente aggiunto!'); </script>";
-}
+$mess='Cliente aggiunto';
+ chiamaAlert($mess);}
 else{
-echo"<script> alert('Username esistente!'); </script>";
+$mess='Username esistente';
+ chiamaAlert($mess);
 }
 
 }
@@ -151,6 +152,9 @@ return true;
 else {
 return false;
 }
+}
+function chiamaAlert($mess){
+	echo "<script> alert($mess); </script>";
 }
 ?>
 
