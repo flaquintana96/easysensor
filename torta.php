@@ -1,4 +1,3 @@
-<?php
 session_start();
 require "connessione.php";
 include 'g/phpgraphlib.php';
@@ -26,4 +25,3 @@ $graph->setTitle('Frequenza errori');
 $graph->setLabelTextColor('50,50,50');
 $graph->setLegendTextColor('50,50,50');
 $graph->createGraph();
-?>
