@@ -1,5 +1,5 @@
 <?php
-require("connessione.php");
+require "connessione.php";
 session_start();
 
 $idutente = $_SESSION['id'];
