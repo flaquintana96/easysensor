@@ -6,8 +6,8 @@ $idutente = $_SESSION['id'];
 
 
 $codice=0;
-$radio;
-$vis;
+$radio="";
+$vis="";
 
 function visualizzaDashboard(){
 
