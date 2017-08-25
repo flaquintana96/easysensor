@@ -1,7 +1,7 @@
 <?php
 //PAGINA DI LOGIN
-require "connessione.php";
-require "alert.php";
+require 'connessione.php';
+require 'alert.php';
 session_start();
 
 global $username;
@@ -15,11 +15,11 @@ $password = $_POST['password'];
 
 if(richiediAutenticazione()){
 // admin loggato;
-header("location:admin.php");
+header('location:admin.php');
 }
 else{
 //cliente loggato
-header("location:cliente.php");
+header('location:cliente.php');
 }
 }
 }
@@ -40,7 +40,7 @@ $_SESSION['formatoapp'] = $row['formato'];
 $_SESSION['preferenzeapp'] = $row['preferenze'];
 
 
-header("location: app.php");
+header('location: app.php');
 
 }
 }
@@ -59,7 +59,7 @@ $row = mysql_fetch_assoc($sql);
 $_SESSION['id'] = $row['id_cliente'];
 $_SESSION['nome'] = $row['nome'];
 
-if($row['cognome'] =="" || $row['cognome'] =='' ){ //SE NON C'È IL COGNOME VAI IN CLIENTE.PHP
+if($row['cognome'] =='' || $row['cognome'] =='' ){ //SE NON C'È IL COGNOME VAI IN CLIENTE.PHP
 return false;
 } 
 
