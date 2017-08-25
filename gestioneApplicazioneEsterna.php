@@ -1,6 +1,5 @@
 <?php
 require "connessione.php";
-require "alert.php";
 session_start();
 
 $idutente = $_SESSION['id'];
@@ -40,8 +39,7 @@ $id_sicuro =  mysql_real_escape_string($_SESSION['id']);
 $codice_sicuro = mysql_real_escape_string($codice);
 $nome_sicuro =  mysql_real_escape_string($nome);
 	$stringa_sicura=  mysql_real_escape_string($stringa);
-	$mess='CODICE APPLICAZIONE ESTERNA  ';
-	Alert($mess);
+echo"<script> alert( 'CODICE APPLICAZIONE ESTERNA: $codice'); </script>";
 	
 	
 	
@@ -70,12 +68,10 @@ if(isset($_POST["codice"])){
 $codiceElimina = $_POST["codice"];
 
 if( !eliminaAutorizzazione($codiceElimina)){
-$mess='Codice non trovato!';
-Alert($mess);
+echo "<script> alert('Codice non trovato!'); </script>";
 }
 else {
-$mess='Applicazione rimossa!';
-Alert($mess);
+echo "<script> alert('Applicazione rimossa!'); </script>";
 }
 
 }
@@ -185,8 +181,10 @@ $checkbox = mysql_query("SELECT `COLUMN_NAME` FROM `INFORMATION_SCHEMA`.`COLUMNS
 
 while($row = mysql_fetch_assoc($checkbox)){
 
-$temp = $row['COLUMN_NAME'];
- echo $temp."<input type='checkbox'  name='test$temp' value = '$temp'>";
+$temp = htmlspecialchars( mysql_result($row, 0, 'COLUMN_NAME') );
+	$pre_input_checkbox="<input type='checkbox'  name='test";
+	$post_input_checkbox=" value = '$temp'>";
+ echo $temp.$pre_input_checkbox.$temp.$post_input_checkbox;
 
 }
 
