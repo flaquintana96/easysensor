@@ -156,6 +156,7 @@ return false;
 function chiamaAlert($mess){
 	echo "<script> alert($mess); </script>";
 }
+mysql_close();
 ?>
 
 <!DOCTYPE html>
