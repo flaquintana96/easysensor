@@ -1,34 +1,34 @@
 <?php
-require "connessione.php";
-require "alert.php";
+require 'connessione.php';
+require 'alert.php';
 
-$nome="";
-$username="";
-$password="";
-$id_cliente="";
+$nome='';
+$username='';
+$password='';
+$id_cliente='';
 
-$marca="";
-$tipo="";
-$pattern="";
-$id_sensore="";
+$marca='';
+$tipo='';
+$pattern='';
+$id_sensore='';
 
-$id_sensoreFK="";
-$rilevazione="";
-$data="";
-$ora="";
-$errore="";
-$descrizione="";
+$id_sensoreFK='';
+$rilevazione='';
+$data='';
+$ora='';
+$errore='';
+$descrizione='';
 
 
 
 //PREMUTO IL BOTTONE AGGIUNGI SENSORE
-if(isset($_POST["submitAggiungiSensore"])){
+if(isset($_POST['submitAggiungiSensore'])){
 
-if(isset($_POST["id_clienteFK"]) && isset($_POST["marca"]) && isset($_POST["tipo"])) {
+if(isset($_POST['id_clienteFK']) && isset($_POST['marca']) && isset($_POST['tipo'])) {
 
-$id_clienteFK = mysql_real_escape_string( $_POST["id_clienteFK"]);
-$marca = mysql_real_escape_string( $_POST["marca"]);
-$tipo = mysql_real_escape_string( $_POST["tipo"]);
+$id_clienteFK = mysql_real_escape_string( $_POST['id_clienteFK']);
+$marca = mysql_real_escape_string( $_POST['marca']);
+$tipo = mysql_real_escape_string( $_POST['tipo']);
 
 
 if(aggiungiSensore($id_clienteFK, $marca, $tipo)){
@@ -43,16 +43,16 @@ $mess='Proprietario non esistente';
 
 //PREMUTO IL BOTTONE AGGIUNGI RILEVAZIONE
 
-if(isset($_POST["submitAggiungiRilevazione"])){
+if(isset($_POST['submitAggiungiRilevazione'])){
 
-if(isset($_POST["id_sensoreFK"]) && isset($_POST["rilevazione"]) && isset($_POST["data"])  && isset($_POST["ora"])  ){
-$id_sensoreFK = mysql_real_escape_string($_POST["id_sensoreFK"]);
-$rilevazione = mysql_real_escape_string( $_POST["rilevazione"]);
-$data = mysql_real_escape_string($_POST["data"]);
-$ora = mysql_real_escape_string($_POST["ora"]);
-if(isset($_POST["errore"]))$errore = mysql_real_escape_string($_POST["errore"]);
+if(isset($_POST['id_sensoreFK']) && isset($_POST['rilevazione']) && isset($_POST['data'])  && isset($_POST['ora'])  ){
+$id_sensoreFK = mysql_real_escape_string($_POST['id_sensoreFK']);
+$rilevazione = mysql_real_escape_string( $_POST['rilevazione']);
+$data = mysql_real_escape_string($_POST['data']);
+$ora = mysql_real_escape_string($_POST['ora']);
+if(isset($_POST['errore']))$errore = mysql_real_escape_string($_POST['errore']);
 else $errore=0;
-if(isset($_POST["descrizione"]))$descrizione = mysql_real_escape_string($_POST["descrizione"]);
+if(isset($_POST['descrizione']))$descrizione = mysql_real_escape_string($_POST['descrizione']);
 else $descrizione=NULL;
 
 
@@ -67,12 +67,12 @@ Alert($mess);}
 
 //PREMUTO IL BOTTONE AGGIUNGI CLIENTE
 
-if(isset($_POST["submitAggiungiCliente"])){
+if(isset($_POST['submitAggiungiCliente'])){
 //aggiungere controlli lunghezza
-if(isset($_POST["nome"]) && isset($_POST["username"]) && isset($_POST["password"])){
-$username = mysql_real_escape_string($_POST["username"]);
-$password = mysql_real_escape_string($_POST["password"]);
-$nome = mysql_real_escape_string($_POST["nome"]);
+if(isset($_POST['nome']) && isset($_POST['username']) && isset($_POST['password'])){
+$username = mysql_real_escape_string($_POST['username']);
+$password = mysql_real_escape_string($_POST['password']);
+$nome = mysql_real_escape_string($_POST['nome']);
 
 if(aggiungiCliente( $username, $password, $nome)) {
 $mess='Cliente aggiunto';
