@@ -38,8 +38,7 @@ $i++;
 }
 
 echo"<script> alert( 'CODICE APPLICAZIONE ESTERNA: $codice'); </script>";
-$query = mysql_query("INSERT INTO applicazione_esterna (id_clienteFK,codice,nome,preferenze) 
-			values ('".$_SESSION['id']."','".$codice."','".$nome."','".$stringa."' )");               
+$query = mysql_query("INSERT INTO applicazione_esterna (id_clienteFK,codice,nome,preferenze) values ('".$_SESSION['id']."','".$codice."','".$nome."','".$stringa."' )");               
 
 
 
