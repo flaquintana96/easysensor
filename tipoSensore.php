@@ -154,25 +154,45 @@ function trovaTipo($tipo,$marca){
 <table class="table">
 
 <?php
+	$tr="<tr>";
+	$_tr="</tr>";
+	$td_class="<td class='td'>";
+	$_td="</td>";
+	
 $query="";
 if($query){
-echo"<tr>";
-echo"<th class='th'>TIPOLOGIA</th>";
-echo"<th class='th'>MARCA</th>";
-echo"<th class='th'>PATTERN</th>";
-echo"<th class='th'>NOME CAMPI</th>";
-echo"<th class='th'>ERRORE</th>";
-echo"</tr>";
+echo $tr;
+$stampa="<th class='th'>TIPOLOGIA</th>";
+echo $stampa;
+$stampa="<th class='th'>MARCA</th>";
+echo $stampa;
+$stampa="<th class='th'>PATTERN</th>";
+echo $stampa;
+$stampa="<th class='th'>NOME CAMPI</th>";
+echo $stampa;
+$stampa="<th class='th'>ERRORE</th>";
+echo $stampa;
+echo $_tr;
 }
 
 while ($row = mysql_fetch_assoc($query)) {
-		echo"<tr>";
-        echo "<td class ='td'> ". $row['tipo']."</td> ";
-        echo "<td class ='td'> ". $row['marca']." </td>";
-        echo "<td class ='td'> ". $row['pattern']." </td> ";
-        echo "<td class ='td'> ". $row['array_stringhe']." </td> ";
-        echo "<td class ='td'> ". $row['stringa_errore']." </td> ";
-        echo "</tr>";
+	$tipo= htmlspecialchars( mysql_result($row, 0, 'tipo') );
+	$marca= htmlspecialchars( mysql_result($row, 0, 'marca') );
+	$pattern= htmlspecialchars( mysql_result($row, 0, 'pattern') );
+	$array_stringhe= htmlspecialchars( mysql_result($row, 0, 'array_stringhe') );
+	$stringa_errore= htmlspecialchars( mysql_result($row, 0, 'stringa_errore') );
+	echo $tr;
+        $stampa=$td_class.$tipo.$_td;
+	echo $stampa;
+	 $stampa=$td_class.$marca.$_td;
+	echo $stampa;
+	 $stampa=$td_class.$pattern.$_td;
+	echo $stampa;
+        $stampa=$td_class.$array_stringhe.$_td;
+	echo $stampa;
+        $stampa=$td_class.$stringa_errore.$_td;
+	echo $stampa;
+        echo $_tr;
         }
 
 ?>
