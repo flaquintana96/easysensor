@@ -13,9 +13,9 @@ $id_cliente="";
 if(isset($_POST["submitAggiungiCliente"])){
 
 if(isset($_POST["nome"]) && isset($_POST["username"]) && isset($_POST["password"])){
-$username = $_POST["username"];
-$password = $_POST["password"];
-$nome = $_POST["nome"];
+$username = mysql_real_escape_string($_POST["username"]);
+$password =  mysql_real_escape_string($_POST["password"]);
+$nome =  mysql_real_escape_string($_POST["nome"]);
 
 if(aggiungiCliente( $username, $password, $nome)) {
 echo "<script> alert('Cliente aggiunto!'); </script>";
