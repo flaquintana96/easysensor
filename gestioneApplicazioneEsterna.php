@@ -1,5 +1,6 @@
 <?php
-require "connessione.php";
+require 'connessione.php';
+require 'alert.php';
 session_start();
 
 $idutente = $_SESSION['id'];
@@ -35,11 +36,12 @@ $temp = $row['COLUMN_NAME'];
  
 $i++;
 }
-$id_sicuro =  mysql_real_escape_string($_SESSION['id']);
-$codice_sicuro = mysql_real_escape_string($codice);
-$nome_sicuro =  mysql_real_escape_string($nome);
+	$id_sicuro =  mysql_real_escape_string($_SESSION['id']);
+	$codice_sicuro = mysql_real_escape_string($codice);
+	$nome_sicuro =  mysql_real_escape_string($nome);
 	$stringa_sicura=  mysql_real_escape_string($stringa);
-echo"<script> alert( 'CODICE APPLICAZIONE ESTERNA: $codice'); </script>";
+	$mex="CODICE APPLICAZIONE ESTERNA: $codice";
+	Alert($mex);
 	
 	
 	
@@ -68,10 +70,12 @@ if(isset($_POST["codice"])){
 $codiceElimina = mysql_real_escape_string($_POST["codice"]);
 
 if( !eliminaAutorizzazione($codiceElimina)){
-echo "<script> alert('Codice non trovato!'); </script>";
+	$mex="Codice non trovato!";
+	Alert($mex);
 }
 else {
-echo "<script> alert('Applicazione rimossa!'); </script>";
+$mex="Applicazione rimossa!";
+	Alert($mex);
 }
 
 }
@@ -95,8 +99,8 @@ $n2;
 $select = mysql_query("SELECT * FROM applicazione_esterna");
 $n = mysql_num_rows($select);
 
-if(trovaApplicazioneEsterna($codiceElimina)){
-	$codiceElimina_sicuro =  mysql_real_escape_string($codicElimina);
+if(trovaApplicazioneEsterna(mysql_real_escape_string($codicElimina))){
+	$codiceElimina_sicuro =  $codiceElimina;
  mysql_query("DELETE FROM applicazione_esterna WHERE codice = '".$codiceElimina_sicuro."' ");
 }
 $select = mysql_query("SELECT * FROM applicazione_esterna");
@@ -203,20 +207,23 @@ $temp = htmlspecialchars( mysql_result($row, 0, 'COLUMN_NAME') );
 <table class="table">
 
 <?php
-if($vis){
-
-echo"<tr>";
-echo"<th class='th'>CODICE</th>";
-echo"<th class='th'>NOME APPLICAZIONE</th>";
-echo"<th class='th'>FORMATO</th>";
-
-echo"</tr>";
-
-}
 	$tr="<tr>";
 	$_tr="</tr>";
 	$td_class="<td class='td'>";
 	$_td="</td>";
+	
+if($vis){
+
+echo $tr;
+$stampa="<th class='th'>CODICE</th>";
+echo $stampa;
+$stampa="<th class='th'>NOME APPLICAZIONE</th>";
+echo $stampa;
+$stampa="<th class='th'>FORMATO</th>";
+echo $stampa;
+echo $_tr;
+
+}
 	
 while ($row = mysql_fetch_assoc($vis)) {
 	$codice= htmlspecialchars( mysql_result($row, 0, 'codice') );
