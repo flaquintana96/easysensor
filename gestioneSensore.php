@@ -8,7 +8,7 @@ $pattern="";
 $id_sensore="";
 
 
-if($_POST["submitVisualizzaSensori"]){
+if(isset($_POST["submitVisualizzaSensori"])){
 $query = mysql_query("SELECT * FROM sensore");
 }
 
@@ -22,7 +22,7 @@ function visualizzaSensori(){
 
 
 //PREMUTO IL BOTTONE AGGIUNGI SENSORE
-if($_POST["submitAggiungiSensore"]){
+if(isset($_POST["submitAggiungiSensore"])){
 
 if(isset($_POST["id_clienteFK"]) && isset($_POST["marca"]) && isset($_POST["tipo"]) ){
 
@@ -42,7 +42,7 @@ echo "<script> alert('Proprietario non esistente!'); </script>";
 }
 
 //PREMUTO IL BOTTONE ELIMINA SENSORE
-if($_POST["submitRimuoviSensore"]){
+if(isset($_POST["submitRimuoviSensore"])){
 
 if(isset($_POST["id_sensore"])){
 $id_sensore = $_POST["id_sensore"];
