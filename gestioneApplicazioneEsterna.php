@@ -64,7 +64,7 @@ $stmt->execute();
 
 
 //PREMUTO IL BOTTONE ELIMINA AUTORIZZAZIONE
-if($_POST["submitEliminaAutorizzazione"]){
+if(isset($_POST["submitEliminaAutorizzazione"])){
 
 if(isset($_POST["codice"])){
 $codiceElimina = mysql_real_escape_string($_POST["codice"]);
@@ -128,13 +128,13 @@ return false;
 
 
 //PREMUTO IL BOTTONE AUTORIZZA
-if($_POST['submitAutorizzazione']){
+if(isset($_POST['submitAutorizzazione'])){
 autorizzaApplicazioneEsterna();
 scegliDatiTrasferimento();
 }
 
 //PREMUTO IL BOTTONE VISUALIZZA APPLICAZIONI ESTERNE
-if($_POST["submitVisualizzaApplicazioniEsterne"]){
+if(isset($_POST["submitVisualizzaApplicazioniEsterne"])){
 $vis = visualizzaApplicazioniEsterne();
 }
 
@@ -214,7 +214,7 @@ $temp = htmlspecialchars( mysql_result($row, 0, 'COLUMN_NAME') );
 	$td_class="<td class='td'>";
 	$_td="</td>";
 	
-if($vis){
+if(isset($vis)){
 
 echo $tr;
 $stampa="<th class='th'>CODICE</th>";
