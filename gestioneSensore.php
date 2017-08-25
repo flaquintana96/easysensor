@@ -152,6 +152,7 @@ return false;
 <table>
 
 <?php
+	$query="";
 if($query){
 echo"<tr>";
 echo"<th class='th'>ID SENSORE</th>";
