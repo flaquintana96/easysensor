@@ -22,7 +22,7 @@ $descrizione="";
 
 
 //PREMUTO IL BOTTONE AGGIUNGI SENSORE
-if($_POST["submitAggiungiSensore"]){
+if(isset($_POST["submitAggiungiSensore"])){
 
 if(isset($_POST["id_clienteFK"]) && isset($_POST["marca"]) && isset($_POST["tipo"])) {
 
@@ -43,7 +43,7 @@ $mess='Proprietario non esistente';
 
 //PREMUTO IL BOTTONE AGGIUNGI RILEVAZIONE
 
-if($_POST["submitAggiungiRilevazione"]){
+if(isset($_POST["submitAggiungiRilevazione"])){
 
 if(isset($_POST["id_sensoreFK"]) && isset($_POST["rilevazione"]) && isset($_POST["data"])  && isset($_POST["ora"])  ){
 $id_sensoreFK = mysql_real_escape_string($_POST["id_sensoreFK"]);
@@ -67,7 +67,7 @@ Alert($mess);}
 
 //PREMUTO IL BOTTONE AGGIUNGI CLIENTE
 
-if($_POST["submitAggiungiCliente"]){
+if(isset($_POST["submitAggiungiCliente"])){
 //aggiungere controlli lunghezza
 if(isset($_POST["nome"]) && isset($_POST["username"]) && isset($_POST["password"])){
 $username = mysql_real_escape_string($_POST["username"]);
@@ -93,14 +93,14 @@ $checkcliente = mysql_query("SELECT * FROM utente WHERE id_cliente = '".$id_clie
 if(mysql_num_rows($checkcliente)==0){ return false;}
 
 $query = mysql_query("INSERT INTO sensore (id_clienteFK,marca,tipo) values('".$id_clienteFK."', '".$marca."', '".$tipo."' )") ;
-if($query){
+if(isset($query)){
 return true;
 }
 }
 
 function aggiungiRilevazione($id_sensoreFK, $rilevazione, $data, $ora, $errore, $descrizione){
 $query = mysql_query("INSERT INTO rilevazione (id_sensoreFK,rilevazione,data,ora,errore,descrizione) values('".$id_sensoreFK."', '".$rilevazione."','".$data."' ,'".$ora."' ,'".$errore."' ,'".$descrizione."')") ;
-if($query){
+if(isset($query)){
 return true;
 }
 else {
