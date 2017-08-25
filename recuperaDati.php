@@ -1,5 +1,6 @@
 <?php
 require "connessione.php";
+require "alert.php";
 
 $nome="";
 $username="";
@@ -57,10 +58,10 @@ else $descrizione=NULL;
 
 if(aggiungiRilevazione( $id_sensoreFK, $rilevazione, $data, $ora,  $errore, $descrizione)) {
 $mess='Rilevazione aggiunta';
- chiamaAlert($mess);}
+Alert($mess);}
 else {
 $mess='Errore!';
- chiamaAlert($mess);}
+Alert($mess);}
 }
 }
 
@@ -75,10 +76,10 @@ $nome = mysql_real_escape_string($_POST["nome"]);
 
 if(aggiungiCliente( $username, $password, $nome)) {
 $mess='Cliente aggiunto';
- chiamaAlert($mess);}
+Alert($mess);}
 else{
 $mess='Username esistente';
- chiamaAlert($mess);
+Alert($mess);
 }
 
 }
@@ -152,9 +153,6 @@ return true;
 else {
 return false;
 }
-}
-function chiamaAlert($mess){
-	echo "<script> alert($mess); </script>";
 }
 mysql_close();
 ?>
