@@ -69,13 +69,13 @@ if($_POST["submitVisualizzaTipi"]){
 }
 
 function visualizzaTipi(){
-	$query = mysql_query("SELECT * FROM tipi_sensore ");
+	 mysql_query("SELECT * FROM tipi_sensore ");
 }
 
 function rimuoviTipo($tipo,$marca){
 	//se esiste lo elimino
 	if(trovaTipo($tipo,$marca)){
-		$query = mysql_query("DELETE FROM tipi_sensore WHERE tipo = '".$tipo."' AND marca = '".$marca."' ");
+		 mysql_query("DELETE FROM tipi_sensore WHERE tipo = '".$tipo."' AND marca = '".$marca."' ");
 		return true;
 	}
 	else {
