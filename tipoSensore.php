@@ -2,7 +2,9 @@
 require "connessione.php";
 
 function Alert($mex){
-	echo "<script> alert(".$mex."); </script>";
+	$pre="<script> alert(";
+	$post="); </script>";
+	echo $pre.$mex.$post;
 }
 
 if (isset($_POST['tipo'])){
