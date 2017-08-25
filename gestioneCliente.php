@@ -49,7 +49,7 @@ $query = mysql_query("SELECT id_cliente, username, password,nome FROM utente WHE
 }
 
 function visualizzaClienti(){
-$query = mysql_query("SELECT id_cliente, username, password,nome FROM utente WHERE cognome = '' ");
+ mysql_query("SELECT id_cliente, username, password,nome FROM utente WHERE cognome = '' ");
 }
 
 
@@ -83,7 +83,7 @@ function rimuoviCliente($id_cliente){
 
 //se esiste lo elimino
 if(trovaCliente($id_cliente)){
-$query = mysql_query("DELETE utente,sensore,rilevazione FROM utente
+ mysql_query("DELETE utente,sensore,rilevazione FROM utente
 INNER JOIN sensore ON `utente`.`id_cliente` = `sensore`.`id_clienteFK`
 INNER JOIN rilevazione ON `sensore`.`id_sensore` = `rilevazione`.`id_sensoreFK`
 WHERE id_cliente = '".$id_cliente."'   ");
