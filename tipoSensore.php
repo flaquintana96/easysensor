@@ -1,6 +1,5 @@
 <?php
 require "connessione.php";
-
 require "alert.php";
 
 if (isset($_POST['tipo'])){
@@ -9,6 +8,7 @@ if (isset($_POST['tipo'])){
 if (isset($_POST['marca'])){
 	$marca=$_POST['marca'];
 }  
+$stringhe_campi="";
 if (isset($_POST['array_di_stringhe'])){
 	$stringhe_campi=$_POST['array_di_stringhe'];
 }  
@@ -154,6 +154,7 @@ function trovaTipo($tipo,$marca){
 <table class="table">
 
 <?php
+$query="";
 if($query){
 echo"<tr>";
 echo"<th class='th'>TIPOLOGIA</th>";
