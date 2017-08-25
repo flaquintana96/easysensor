@@ -170,10 +170,14 @@ echo"</tr>";
 
 while ($row = mysql_fetch_assoc($query)) {
 		echo"<tr>";
-        echo "<td class ='td'> ". $row['id_cliente']."</td> ";
-        echo "<td class ='td'> ". $row['nome']." </td>";
-        echo "<td class ='td'> ". $row['username']." </td> ";
-        echo "<td class ='td'> ". $row['password']." </td> ";
+	$stampa="<td class ='td'> ". $row['id_cliente']."</td> ";
+        echo $stampa;
+	$stampa="<td class ='td'> ". $row['nome']." </td>";
+        echo $stampa;
+	$stampa="<td class ='td'> ". $row['username']." </td> ";
+        echo $stampa;
+	$stampa="<td class ='td'> ". $row['password']." </td> ";
+        echo $stampa;
         echo "</tr>";
         }
 
