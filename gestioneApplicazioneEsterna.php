@@ -4,7 +4,7 @@ session_start();
 
 $idutente = $_SESSION['id'];
 
-$codice;
+
 $codice=0;
 $radio;
 $vis;
@@ -16,6 +16,7 @@ function visualizzaDashboard(){
 function scegliDatiTrasferimento(){
 $stringa ="0000000000000000";
 
+global $codice;
 
 $checkbox = mysql_query("SELECT `COLUMN_NAME` FROM `INFORMATION_SCHEMA`.`COLUMNS` WHERE `TABLE_NAME` IN ('rilevazione', 'sensore') AND COLUMN_NAME NOT LIKE 'id_%'"); 
 
@@ -40,7 +41,20 @@ $codice_sicuro = mysql_real_escape_string($codice);
 $nome_sicuro =  mysql_real_escape_string($nome);
 	$stringa_sicura=  mysql_real_escape_string($stringa);
 echo"<script> alert( 'CODICE APPLICAZIONE ESTERNA: $codice'); </script>";
- mysql_query("INSERT INTO applicazione_esterna (id_clienteFK,codice,nome,preferenze) values ('".$id_sicuro."','".$codice_sicuro."','".$nome_sicuro."','".$stringa_sicura."' )");               
+	
+	
+	
+	$stmt = $dbh->prepare("INSERT INTO (id_clienteFK,codice,nome,preferenze) 
+VALUES (:id, :cod, :nome, :preferenze)");
+$stmt->bindParam('id', $id_sicuro);
+$stmt->bindParam('cod', $codice_sicuro);
+$stmt->bindParam(':nome', $nome_sicuro);
+	$stmt->bindParam( ':preferenze', $stringa_sicura);
+$stmt->execute();
+	
+	
+	
+ //mysql_query("INSERT INTO applicazione_esterna (id_clienteFK,codice,nome,preferenze) values ('".$id_sicuro."','".$codice_sicuro."','".$nome_sicuro."','".$stringa_sicura."' )");               
 
 
 
@@ -68,9 +82,8 @@ echo "<script> alert('Applicazione rimossa!'); </script>";
 
 
 function autorizzaApplicazioneEsterna(){
-$min=1;
-$max=1000000000;
-$codice = rand($min,$max);
+global $codice;
+$codice = rand(1,1000000000);
 
 }
 
@@ -190,6 +203,7 @@ $temp = $row['COLUMN_NAME'];
 <table class="table">
 
 <?php
+global $vis;
 if($vis){
 
 echo"<tr>";
