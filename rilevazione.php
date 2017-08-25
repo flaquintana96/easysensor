@@ -1,4 +1,3 @@
-<?php
 require "connessione.php";
 function decodificaStringa ($stringa){
 	$id=0;
@@ -121,4 +120,3 @@ function memorizzaDati($stringa){
 $stringa=$_POST["stringa"];
 memorizzaDati($stringa);
 header("location:paginaTest.php");
-?>
