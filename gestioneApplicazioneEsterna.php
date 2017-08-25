@@ -100,9 +100,10 @@ $n2;
 $select = mysql_query('SELECT * FROM applicazione_esterna');
 $n = mysql_num_rows($select);
 
-if(trovaApplicazioneEsterna(mysql_real_escape_string($codicElimina))){
-	$codiceElimina_sicuro =  $codiceElimina;
- mysql_query("DELETE FROM applicazione_esterna WHERE codice = '".$codiceElimina_sicuro."' ");
+if(trovaApplicazioneEsterna($codicElimina)){
+	$codiceElimina_sicuro = mysql_real_escape_string($codiceElimina);
+	$query="DELETE FROM applicazione_esterna WHERE codice =".$codiceElimina_sicuro;
+ mysql_query($query);
 }
 $select = mysql_query('SELECT * FROM applicazione_esterna');
 $n2 = mysql_num_rows($select);
