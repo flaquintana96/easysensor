@@ -1,5 +1,5 @@
 <?php
-require ("connessione.php");
+require "connessione.php";
 if (isset($_POST['tipo'])){
 	$tipo=$_POST['tipo'];
 }    
