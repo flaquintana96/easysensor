@@ -7,6 +7,7 @@ function decodificaStringa ($stringa){
 	for ($i=0;$i<10;$i++){
     	$idStringa=$idStringa.$stringa[$i];
     }   
+	
 	$querymarca = "SELECT marca FROM sensore WHERE id_sensore=$idStringa";
     $marca=mysql_query (addslashes($querymarca));
 	
@@ -20,10 +21,10 @@ function decodificaStringa ($stringa){
     $tipo_stringa=mysql_fetch_assoc($tipo);
 	$tipo_estratto=$tipo_stringa["tipo"];
    
-	$querypattern = "SELECT pattern FROM tipi_sensore WHERE tipo='".$tipo_estratto."' AND marca='".$marca_estratta."'";
+	$querypattern = "SELECT pattern FROM tipi_sensore WHERE tipo= $tipo_estratto AND marca= $marca_estratta";
   	$pattern=mysql_query (addslashes($querypattern));
 	
-	$queryarraystringhe = "SELECT array_stringhe FROM tipi_sensore WHERE tipo='".$tipo_estratto."' AND marca='".$marca_estratta."'";
+	$queryarraystringhe = "SELECT array_stringhe FROM tipi_sensore WHERE tipo=$tipo_estratto AND marca=$marca_estratta";
     $array_stringhe=mysql_query (addslashes($queryarraystringhe));
    	
     $pattern_stringa=mysql_fetch_assoc($pattern);
@@ -50,7 +51,7 @@ function decodificaStringa ($stringa){
     
     $array_da_controllare=explode(',',$stringa_da_inserire);
     $stringa_da_controllare=implode($array_da_controllare);;
-    $stringa_errore=mysql_query ("SELECT stringa_errore FROM tipi_sensore WHERE tipo='".$tipo_estratto."' AND marca='".$marca_estratta."'");
+    $stringa_errore=mysql_query ("SELECT stringa_errore FROM tipi_sensore WHERE tipo=$tipo_estratto AND marca=$marca_estratta");
     $stringa_errore=mysql_fetch_assoc($stringa_errore);
 	$stringa_errore=$stringa_errore["stringa_errore"];
     $erroreTrovato=false;
@@ -111,12 +112,7 @@ function decodificaStringa ($stringa){
 function memorizzaDati($stringa){
 	decodificaStringa($stringa);
 }
-//$stringa = "0000000048prova52marca521950-11-1112:12:121234descrizione di test";
-//$stringa="0000000020temperaturaLiveSensor00000111121950-11-1112:12:12descrizione di test";
-//$stringa="0000000021luminosoInterSensor23:01:542017-08-171579descrizione di test";
-//$stringa="0000000043temperaturaInterSensorImpianto1      2017-08-172222descrizioneTest";
-//$stringa="0000000043temperaturaInterSensor00000000000000000000000000000descrizioneTest";
-//$stringa="0000000042umiditaImpiantoTe15:14:482017-11-1212341254761206descrizione di test";
+
 $stringa=$_POST["stringa"];
 memorizzaDati($stringa);
 header("location:paginaTest.php");
