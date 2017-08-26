@@ -141,8 +141,11 @@ $vis = visualizzaApplicazioniEsterne();
 
 function visualizzaApplicazioniEsterne(){
 
-$query = mysql_query("SELECT * FROM applicazione_esterna WHERE id_clienteFK = '".mysql_real_escape_string($_SESSION['id'])."' ");
-return $query;
+//$query = mysql_query("SELECT * FROM applicazione_esterna WHERE id_clienteFK = '".mysql_real_escape_string($_SESSION['id'])."' ");
+	$stmt = $dbh->prepare("SELECT * FROM applicazione_esterna WHERE id_clienteFK = :id ");
+	$stmt->bindParam(':id', $_SESSION['id']);
+	$stmt->execute();
+	return $stmt;
 }
 
 
