@@ -25,6 +25,7 @@ if (isset($_POST['stringa_errore'])=== true){
 $colonne_tab_rilevazione=mysql_query('SHOW COLUMNS FROM rilevazione');
 $field=array();
 $i=0;
+$stmt = $dbh->prepare("ALTER TABLE rilevazione ADD :array varchar(30)");
 while($righe=mysql_fetch_assoc($colonne_tab_rilevazione)){
 	$field[$i]=$righe["Field"];
     $i++;
@@ -39,7 +40,6 @@ for ($j=0;$j<$couArrayCampi;$j++){
         }
 	}
     if ($trovato===false){
-	$stmt = $dbh->prepare("ALTER TABLE rilevazione ADD :array varchar(30)");
 	$stmt->bindParam(':array', $array_campi[$j]);
 	$stmt->execute();
    // mysql_query("ALTER TABLE rilevazione ADD $array_campi[$j] varchar(30)");
