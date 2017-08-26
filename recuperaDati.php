@@ -53,7 +53,7 @@ $ora = mysql_real_escape_string($_POST['ora']);
 if(isset($_POST['errore']))$errore = mysql_real_escape_string($_POST['errore']);
 else $errore=0;
 if(isset($_POST['descrizione']))$descrizione = mysql_real_escape_string($_POST['descrizione']);
-else $descrizione=NULL;
+else $descrizione=null;
 
 
 if(aggiungiRilevazione( $id_sensoreFK, $rilevazione, $data, $ora,  $errore, $descrizione)) {
