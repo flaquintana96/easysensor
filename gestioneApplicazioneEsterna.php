@@ -2,6 +2,8 @@
 require 'connessione.php';
 require 'alert.php';
 session_start();
+define ('min',1);
+define ('max',1000000000);
 
 $idutente = $_SESSION['id'];
 
@@ -85,7 +87,7 @@ $mex='Applicazione rimossa!';
 
 
 function autorizzaApplicazioneEsterna(){
-$codice = rand(1,1000000000);
+$codice = rand('min','max');
 
 }
 
