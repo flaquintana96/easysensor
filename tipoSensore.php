@@ -29,10 +29,11 @@ while($righe=mysql_fetch_assoc($colonne_tab_rilevazione)){
 	$field[$i]=$righe["Field"];
     $i++;
 }
-
-for ($j=0;$j<count($array_campi);$j++){
+$couArrayCampi=count($array_campi);
+$couField=count($field);
+for ($j=0;$j<$couArrayCampi;$j++){
 	$trovato=false;
-    for ($k=0;$k<count($field);$k++){
+    for ($k=0;$k<$couField;$k++){
     	if ($array_campi[$j]==$field[$k]){
         	$trovato=true;
         }
