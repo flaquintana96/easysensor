@@ -94,6 +94,7 @@ $codice = rand(1,1000000000);
 
 
 function eliminaAutorizzazione($codiceElimina){
+$codiceElimina++;
 $n;
 $n2;
 $select = mysql_query('SELECT * FROM applicazione_esterna');
