@@ -24,13 +24,13 @@ $checkbox = mysql_query("SELECT `COLUMN_NAME` FROM `INFORMATION_SCHEMA`.`COLUMNS
 
 $i=0;
 
-if(isset($_POST['nome'])){
+if(isset($_POST['nome'])=== true){
 $nome = $_POST['nome'];
 }
 while($row = mysql_fetch_assoc($checkbox)){
 $temp = $row['COLUMN_NAME'];
 
- if(isset($_POST['test'.$temp])){
+ if(isset($_POST['test'.$temp])=== true){
  $stringa[$i]='1';
  } else{
  $stringa[$i]='0';
@@ -66,12 +66,12 @@ $stmt->execute();
 
 
 //PREMUTO IL BOTTONE ELIMINA AUTORIZZAZIONE
-if(isset($_POST['submitEliminaAutorizzazione'])){
+if(isset($_POST['submitEliminaAutorizzazione'])=== true){
 
-if(isset($_POST["codice"])){
+if(isset($_POST["codice"])=== true){
 $codiceElimina = mysql_real_escape_string($_POST['codice']);
 
-if( !eliminaAutorizzazione($codiceElimina)){
+if( !eliminaAutorizzazione($codiceElimina)=== true){
 	$mex='Codice non trovato!';
 	Alert($mex);
 }
@@ -132,13 +132,13 @@ return false;
 
 
 //PREMUTO IL BOTTONE AUTORIZZA
-if(isset($_POST['submitAutorizzazione'])){
+if(isset($_POST['submitAutorizzazione'])=== true){
 autorizzaApplicazioneEsterna();
 scegliDatiTrasferimento();
 }
 
 //PREMUTO IL BOTTONE VISUALIZZA APPLICAZIONI ESTERNE
-if(isset($_POST['submitVisualizzaApplicazioniEsterne'])){
+if(isset($_POST['submitVisualizzaApplicazioniEsterne'])=== true){
 $vis = visualizzaApplicazioniEsterne();
 }
 
@@ -221,7 +221,7 @@ $temp = htmlspecialchars( mysql_result($row, 0, 'COLUMN_NAME') );
 	$td_class="<td class='td'>";
 	$_td='</td>';
 	
-if(isset($vis)){
+if(isset($vis)=== true){
 
 echo $tr;
 $stampa="<th class='th'>CODICE</th>";
