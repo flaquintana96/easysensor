@@ -38,13 +38,24 @@ for ($j=0;$j<count($array_campi);$j++){
         }
 	}
     if ($trovato==false){
-    mysql_query("ALTER TABLE rilevazione ADD $array_campi[$j] varchar(30)");
+	$stmt = $dbh->prepare("ALTER TABLE rilevazione ADD :array varchar(30)");
+	$stmt->bindParam(':array', $array_campi[$j]);
+	$stmt->execute();
+   // mysql_query("ALTER TABLE rilevazione ADD $array_campi[$j] varchar(30)");
     }
 }
-if(isset($_POST['submitAdd']))
-{	$query="INSERT INTO tipi_sensore (tipo,marca,pattern,array_stringhe,id_sensoreFK,stringa_errore) values (".$tipo.','.$marca.','.$pattern.','.$stringhe_campi.','.$fk_sensore.','.$errore.')';
-	$ins_tipo=mysql_query($query); //or die(mysql_error());
-	if(isset($ins_tipo)){
+if(isset($_POST['submitAdd'])){
+	$stmt = $dbh->prepare("INSERT INTO tipi_sensore (tipo,marca,pattern,array_stringhe,id_sensoreFK,stringa_errore) values ( :tipo, :marca, :pattern, :array, :id, :errore)");
+	$stmt->bindParam(':tipo', $tipo);
+	$stmt->bindParam(':marca', $marca);
+	$stmt->bindParam(':pattern', $pattern);
+	$stmt->bindParam(':array', $stringhe_campi);
+	$stmt->bindParam(':id', $fk_sensore);
+	$stmt->bindParam(':errore', $errore);
+	$stmt->execute();
+	//$query="INSERT INTO tipi_sensore (tipo,marca,pattern,array_stringhe,id_sensoreFK,stringa_errore) values (".$tipo.','.$marca.','.$pattern.','.$stringhe_campi.','.$fk_sensore.','.$errore.')';
+	//$ins_tipo=mysql_query($query); //or die(mysql_error());
+	if(isset($stmt)){
 		$mex='tipologia sensore aggiunto!';
 		Alert($mex);
 	}
@@ -82,8 +93,12 @@ function visualizzaTipi(){
 function rimuoviTipo($tipo,$marca){
 	//se esiste lo elimino
 	if(trovaTipo($tipo,$marca)){
-		$query="DELETE FROM tipi_sensore WHERE tipo = ".$tipo." AND marca = ".$marca;
-		 mysql_query($query);
+		$stmt = $dbh->prepare("DELETE FROM tipi_sensore WHERE tipo = :tipo AND marca = :marca");
+		$stmt->bindParam(':tipo', $tipo);
+		$stmt->bindParam(':marca', $marca);
+		$stmt->execute();
+		//$query="DELETE FROM tipi_sensore WHERE tipo = ".$tipo." AND marca = ".$marca;
+		// mysql_query($query);
 		return true;
 	}
 	else {
