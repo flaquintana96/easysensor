@@ -9,17 +9,17 @@ if (isset($_POST['marca'])=== true){
 	$marca=htmlspecialchars($_POST['marca']);
 }  
 $stringhe_campi='';
-if (isset($_POST['array_di_stringhe'])== true){
+if (isset($_POST['array_di_stringhe'])=== true){
 	$stringhe_campi=mysql_real_escape_string($_POST['array_di_stringhe']);
 }  
 $array_campi=explode(',',$stringhe_campi);
-if (isset($_POST['pattern'])== true){
+if (isset($_POST['pattern'])=== true){
 	$pattern=$_POST['pattern'];
 }  
-if (isset($_POST['fk_sensore'])== true){
+if (isset($_POST['fk_sensore'])=== true){
 	$fk_sensore=$_POST['fk_sensore'];
 }  
-if (isset($_POST['stringa_errore'])== true){
+if (isset($_POST['stringa_errore'])=== true){
 	$errore=mysql_real_escape_string($_POST['stringa_errore']);
 } 
 $colonne_tab_rilevazione=mysql_query('SHOW COLUMNS FROM rilevazione');
