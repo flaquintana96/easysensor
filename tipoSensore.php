@@ -3,7 +3,7 @@ require 'connessione.php';
 require 'alert.php';
 
 if (isset($_POST['tipo'])){
-	$tipo=$_POST['tipo'];
+	$tipo=htmlspecialchars($_POST['tipo']);
 }    
 if (isset($_POST['marca'])){
 	$marca=htmlspecialchars($_POST['marca']);
