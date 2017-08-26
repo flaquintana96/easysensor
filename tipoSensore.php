@@ -67,7 +67,7 @@ if(isset($_POST['submitAdd'])){
 if(isset($_POST['submitRimuoviTipo'])){
 
 if(isset($_POST['tipo'])&&isset($_POST['marca'])){
-$tipo = $_POST['tipo'];
+$tipo = mysql_real_escape_string($_POST['tipo']);
 $marca = mysql_real_escape_string($_POST['marca']);
 
 if(!rimuoviTipo($tipo,$marca)){
