@@ -92,15 +92,28 @@ function aggiungiSensore($id_clienteFK, $marca, $tipo){
 $checkcliente = mysql_query("SELECT * FROM utente WHERE id_cliente = '".$id_clienteFK."' ");
 if(mysql_num_rows($checkcliente)==0){ return false;}
 
-$query = mysql_query("INSERT INTO sensore (id_clienteFK,marca,tipo) values('".$id_clienteFK."', '".$marca."', '".$tipo."' )") ;
-if(isset($query)){
+//$query = mysql_query("INSERT INTO sensore (id_clienteFK,marca,tipo) values('".$id_clienteFK."', '".$marca."', '".$tipo."' )") ;
+		$stmt = $dbh->prepare("INSERT INTO sensore (id_clienteFK,marca,tipo) values(:id, :marca, :tipo )");
+		$stmt->bindParam(':id', $id_clienteFK);
+		$stmt->bindParam(':marca', $marca);
+		$stmt->bindParam(':tipo', $tipo);
+		$stmt->execute();
+if(isset($stmt)){
 return true;
 }
 }
 
 function aggiungiRilevazione($id_sensoreFK, $rilevazione, $data, $ora, $errore, $descrizione){
-$query = mysql_query("INSERT INTO rilevazione (id_sensoreFK,rilevazione,data,ora,errore,descrizione) values('".$id_sensoreFK."', '".$rilevazione."','".$data."' ,'".$ora."' ,'".$errore."' ,'".$descrizione."')") ;
-if(isset($query)){
+//$query = mysql_query("INSERT INTO rilevazione (id_sensoreFK,rilevazione,data,ora,errore,descrizione) values('".$id_sensoreFK."', '".$rilevazione."','".$data."' ,'".$ora."' ,'".$errore."' ,'".$descrizione."')") ;
+		$stmt = $dbh->prepare("INSERT INTO rilevazione (id_sensoreFK,rilevazione,data,ora,errore,descrizione) values(:id, :rilevazione, :data, :ora, :errore, :descr)");
+		$stmt->bindParam(':data', $data);
+		$stmt->bindParam(':ora', $ora);
+		$stmt->bindParam(':rilevazione', $rilevazione);
+		$stmt->bindParam(':descr', $descrizione);
+		$stmt->bindParam(':id', $id_sensoreFK);
+		$stmt->bindParam(':errore', $errore);
+		$stmt->execute();
+if(isset($stmt)){
 return true;
 }
 else {
@@ -131,7 +144,12 @@ $query = mysql_query("SELECT * FROM cliente WHERE username = '".$username."' ");
 
 //se non esiste lo aggiungo
 if(mysql_num_rows($query)==0){
-mysql_query("INSERT INTO cliente (username,password,nome) values('".$username."', '".$password."', '".$nome."' )") ;
+//mysql_query("INSERT INTO cliente (username,password,nome) values('".$username."', '".$password."', '".$nome."' )") ;
+		$stmt = $dbh->prepare("INSERT INTO cliente (username,password,nome) values(:user, :pass, :nome)");
+		$stmt->bindParam(':user', $username);
+		$stmt->bindParam(':pass', $password);
+		$stmt->bindParam(':nome', $nome);
+		$stmt->execute();
 return true;
 }
 
