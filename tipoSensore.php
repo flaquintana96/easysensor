@@ -42,9 +42,8 @@ for ($j=0;$j<count($array_campi);$j++){
     }
 }
 if(isset($_POST['submitAdd']))
-{
-	$ins_tipo=mysql_query("INSERT INTO tipi_sensore (tipo,marca,pattern,array_stringhe,id_sensoreFK,stringa_errore) 
-	values ('".$tipo."','".$marca."','".$pattern."','".$stringhe_campi."','".$fk_sensore."','".$errore."')"); //or die(mysql_error());
+{	$query="INSERT INTO tipi_sensore (tipo,marca,pattern,array_stringhe,id_sensoreFK,stringa_errore) values (".$tipo.','.$marca.','.$pattern.','.$stringhe_campi.','.$fk_sensore.','.$errore.')';
+	$ins_tipo=mysql_query($query); //or die(mysql_error());
 	if(isset($ins_tipo)){
 		$mex='tipologia sensore aggiunto!';
 		Alert($mex);
@@ -83,7 +82,8 @@ function visualizzaTipi(){
 function rimuoviTipo($tipo,$marca){
 	//se esiste lo elimino
 	if(trovaTipo($tipo,$marca)){
-		 mysql_query("DELETE FROM tipi_sensore WHERE tipo = '".$tipo."' AND marca = '".$marca."' ");
+		$query="DELETE FROM tipi_sensore WHERE tipo = ".$tipo." AND marca = ".$marca;
+		 mysql_query($query);
 		return true;
 	}
 	else {
