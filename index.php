@@ -8,12 +8,12 @@ global $username;
 global $password;
 
 //PREMUTO BOTTONE LOGIN
-if(isset($_POST['login'])){
+if(isset($_POST['login'])=== true){
 if( isset($_POST['username']) && isset($_POST['username'])){
 $username = $_POST['username'];
 $password = $_POST['password'];
 
-if(richiediAutenticazione()){
+if(richiediAutenticazione()=== true){
 // admin loggato;
 header('location:admin.php');
 }
@@ -25,9 +25,9 @@ header('location:cliente.php');
 }
 
 //PREMUTO BOTTONE LOGIN APPLICAZIONE ESTERNA
-if(isset($_POST['loginapp'])){
+if(isset($_POST['loginapp'])=== true){
 
-if( isset($_POST['codice'])){
+if( isset($_POST['codice'])=== true){
 $codice = mysql_real_escape_string($_POST['codice']);
 
 //$sql = mysql_query("SELECT * FROM applicazione_esterna WHERE codice ='".$codice."' ");
@@ -62,7 +62,7 @@ $row = mysql_fetch_assoc($sql);
 $_SESSION['id'] = $row['id_cliente'];
 $_SESSION['nome'] = $row['nome'];
 
-if($row['cognome'] =='' || $row['cognome'] =='' ){ //SE NON C'È IL COGNOME VAI IN CLIENTE.PHP
+if($row['cognome'] ==='' || $row['cognome'] ==='' ){ //SE NON C'È IL COGNOME VAI IN CLIENTE.PHP
 return false;
 } 
 
