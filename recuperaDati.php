@@ -26,7 +26,7 @@ if(isset($_POST['submitAggiungiSensore'])){
 
 if(isset($_POST['id_clienteFK']) && isset($_POST['marca']) && isset($_POST['tipo'])) {
 
-$id_clienteFK = mysql_real_escape_string( $_POST['id_clienteFK']);
+$id_clienteFK = htmlspecialchars( $_POST['id_clienteFK']);
 $marca = mysql_real_escape_string( $_POST['marca']);
 $tipo = mysql_real_escape_string( $_POST['tipo']);
 
@@ -70,7 +70,7 @@ Alert($mess);}
 if(isset($_POST['submitAggiungiCliente'])){
 //aggiungere controlli lunghezza
 if(isset($_POST['nome']) && isset($_POST['username']) && isset($_POST['password'])){
-$username = mysql_real_escape_string($_POST['username']);
+$username = htmlspecialchars($_POST['username']);
 $password = mysql_real_escape_string($_POST['password']);
 $nome = mysql_real_escape_string($_POST['nome']);
 
