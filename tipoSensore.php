@@ -6,7 +6,7 @@ if (isset($_POST['tipo'])){
 	$tipo=$_POST['tipo'];
 }    
 if (isset($_POST['marca'])){
-	$marca=$_POST['marca'];
+	$marca=htmlspecialchars($_POST['marca']);
 }  
 $stringhe_campi='';
 if (isset($_POST['array_di_stringhe'])){
