@@ -10,7 +10,7 @@ if (isset($_POST['marca'])){
 }  
 $stringhe_campi='';
 if (isset($_POST['array_di_stringhe'])){
-	$stringhe_campi=$_POST['array_di_stringhe'];
+	$stringhe_campi=mysql_real_escape_string($_POST['array_di_stringhe']);
 }  
 $array_campi=explode(',',$stringhe_campi);
 if (isset($_POST['pattern'])){
@@ -20,7 +20,7 @@ if (isset($_POST['fk_sensore'])){
 	$fk_sensore=$_POST['fk_sensore'];
 }  
 if (isset($_POST['stringa_errore'])){
-	$errore=$_POST['stringa_errore'];
+	$errore=mysql_real_escape_string($_POST['stringa_errore']);
 } 
 $colonne_tab_rilevazione=mysql_query('SHOW COLUMNS FROM rilevazione');
 $field=array();
@@ -57,7 +57,7 @@ if(isset($_POST['submitRimuoviTipo'])){
 
 if(isset($_POST['tipo'])&&isset($_POST['marca'])){
 $tipo = $_POST['tipo'];
-$marca = $_POST['marca'];
+$marca = mysql_real_escape_string($_POST['marca']);
 
 if(!rimuoviTipo($tipo,$marca)){
 	$mex='Tipologia di sensore non trovata!';
