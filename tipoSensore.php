@@ -2,24 +2,24 @@
 require 'connessione.php';
 require 'alert.php';
 
-if (isset($_POST['tipo'])){
+if (isset($_POST['tipo'])=== true){
 	$tipo=htmlspecialchars($_POST['tipo']);
 }    
-if (isset($_POST['marca'])){
+if (isset($_POST['marca'])=== true){
 	$marca=htmlspecialchars($_POST['marca']);
 }  
 $stringhe_campi='';
-if (isset($_POST['array_di_stringhe'])){
+if (isset($_POST['array_di_stringhe'])== true){
 	$stringhe_campi=mysql_real_escape_string($_POST['array_di_stringhe']);
 }  
 $array_campi=explode(',',$stringhe_campi);
-if (isset($_POST['pattern'])){
+if (isset($_POST['pattern'])== true){
 	$pattern=$_POST['pattern'];
 }  
-if (isset($_POST['fk_sensore'])){
+if (isset($_POST['fk_sensore'])== true){
 	$fk_sensore=$_POST['fk_sensore'];
 }  
-if (isset($_POST['stringa_errore'])){
+if (isset($_POST['stringa_errore'])== true){
 	$errore=mysql_real_escape_string($_POST['stringa_errore']);
 } 
 $colonne_tab_rilevazione=mysql_query('SHOW COLUMNS FROM rilevazione');
@@ -34,18 +34,18 @@ $couField=count($field);
 for ($j=0;$j<$couArrayCampi;$j++){
 	$trovato=false;
     for ($k=0;$k<$couField;$k++){
-    	if ($array_campi[$j]==$field[$k]){
+    	if ($array_campi[$j]===$field[$k]){
         	$trovato=true;
         }
 	}
-    if ($trovato==false){
+    if ($trovato===false){
 	$stmt = $dbh->prepare("ALTER TABLE rilevazione ADD :array varchar(30)");
 	$stmt->bindParam(':array', $array_campi[$j]);
 	$stmt->execute();
    // mysql_query("ALTER TABLE rilevazione ADD $array_campi[$j] varchar(30)");
     }
 }
-if(isset($_POST['submitAdd'])){
+if(isset($_POST['submitAdd'])=== true){
 	$stmt = $dbh->prepare("INSERT INTO tipi_sensore (tipo,marca,pattern,array_stringhe,id_sensoreFK,stringa_errore) values ( :tipo, :marca, :pattern, :array, :id, :errore)");
 	$stmt->bindParam(':tipo', $tipo);
 	$stmt->bindParam(':marca', $marca);
@@ -56,7 +56,7 @@ if(isset($_POST['submitAdd'])){
 	$stmt->execute();
 	//$query="INSERT INTO tipi_sensore (tipo,marca,pattern,array_stringhe,id_sensoreFK,stringa_errore) values (".$tipo.','.$marca.','.$pattern.','.$stringhe_campi.','.$fk_sensore.','.$errore.')';
 	//$ins_tipo=mysql_query($query); //or die(mysql_error());
-	if(isset($stmt)){
+	if(isset($stmt)=== true){
 		$mex='tipologia sensore aggiunto!';
 		Alert($mex);
 	}
@@ -65,13 +65,13 @@ if(isset($_POST['submitAdd'])){
 		Alert($mex);
 	}
 }
-if(isset($_POST['submitRimuoviTipo'])){
+if(isset($_POST['submitRimuoviTipo'])=== true){
 
 if(isset($_POST['tipo'])&&isset($_POST['marca'])){
 $tipo = htmlspecialchars($_POST['tipo']);
 $marca = htmlspecialchars($_POST['marca']);
 
-if(!rimuoviTipo($tipo,$marca)){
+if(!rimuoviTipo($tipo,$marca)=== true){
 	$mex='Tipologia di sensore non trovata!';
 	Alert($mex);
 }
@@ -83,7 +83,7 @@ else {
 
 }
 }
-if(isset($_POST['submitVisualizzaTipi'])){
+if(isset($_POST['submitVisualizzaTipi'])=== true){
 	$query = mysql_query('SELECT * FROM tipi_sensore ');
 }
 
@@ -93,7 +93,7 @@ function visualizzaTipi(){
 
 function rimuoviTipo($tipo,$marca){
 	//se esiste lo elimino
-	if(trovaTipo($tipo,$marca)){
+	if(trovaTipo($tipo,$marca)=== true){
 		$stmt = $dbh->prepare("DELETE FROM tipi_sensore WHERE tipo = :tipo AND marca = :marca");
 		$stmt->bindParam(':tipo', $tipo);
 		$stmt->bindParam(':marca', $marca);
@@ -176,7 +176,7 @@ function trovaTipo($tipo,$marca){
 	$_td='</td>';
 	
 $query='';
-if(isset($query)){
+if(isset($query)=== true){
 echo $tr;
 $stampa="<th class='th'>TIPOLOGIA</th>";
 echo $stampa;
