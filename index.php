@@ -30,9 +30,12 @@ if(isset($_POST['loginapp'])){
 if( isset($_POST['codice'])){
 $codice = mysql_real_escape_string($_POST['codice']);
 
-$sql = mysql_query("SELECT * FROM applicazione_esterna WHERE codice ='".$codice."' ");
+//$sql = mysql_query("SELECT * FROM applicazione_esterna WHERE codice ='".$codice."' ");
+	$stmt = $dbh->prepare("SELECT * FROM applicazione_esterna WHERE codice = :cod");
+	$stmt->bindParam(':cod', $codice);
+	$stmt->execute();
 
-if(mysql_num_rows($sql)>0){
+if(mysql_num_rows($stmt)>0){
 $row = mysql_fetch_assoc($sql);
 $_SESSION['codiceapp'] = $row['codice'];
 $_SESSION['nomeapp'] = $row['nome'];
