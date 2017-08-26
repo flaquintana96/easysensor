@@ -28,7 +28,7 @@ header('location:cliente.php');
 if(isset($_POST['loginapp'])){
 
 if( isset($_POST['codice'])){
-$codice = $_POST['codice'];
+$codice = mysql_real_escape_string($_POST['codice']);
 
 $sql = mysql_query("SELECT * FROM applicazione_esterna WHERE codice ='".$codice."' ");
 
