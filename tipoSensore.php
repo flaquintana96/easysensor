@@ -25,8 +25,9 @@ if (isset($_POST['stringa_errore'])=== true){
 $colonne_tab_rilevazione=mysql_query('SHOW COLUMNS FROM rilevazione');
 $field=array();
 $i=0;
-$stmt ='';
+if(isset($stmt)==false){
 $stmt = $dbh->prepare("ALTER TABLE rilevazione ADD :array varchar(30)");
+}
 while($righe=mysql_fetch_assoc($colonne_tab_rilevazione)){
 	$field[$i]=$righe["Field"];
     $i++;
